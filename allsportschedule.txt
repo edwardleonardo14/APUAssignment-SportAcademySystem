@@ -1,0 +1,4 @@
+SCH001 | L001 | Surabaya | S001 | Basketball | ID001 | Edward Leonardo | Monday | 12.00 PM | 120 Minutes
+SCH002 | L002 | Malang | S006 | Football | ID005 | Moudy Wiyono | Monday | 14.00 PM | 120 Minutes
+SCH003 | L003 | Lampung | S009 | Table Tennis | ID001 | Edward Leonardo | Monday | 12.00 PM | 120 Minutes
+SCH004 | L002 | Malang | S005 | Badminton | ID005 | Moudy Wiyono | Wednesday | 15.00 PM | 180 Minutes

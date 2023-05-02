@@ -1,0 +1,8 @@
+
+The First and Second Digit indicate the hour of the time, while the Third and fourth
+digit indicate the minute of the time
+
+00.00 = 12 am (Midnight)
+12.00 = 12 pm
+15.01 = 15.01 = 03.01 pm
+03.01 = 03.01 = 03.01 am

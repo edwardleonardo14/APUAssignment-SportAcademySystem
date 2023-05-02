@@ -1,0 +1,6 @@
+
+Location ID List :
+
+If the location is Surabaya, please enter "L001"
+If the location is Malang, please enter "L002"
+If the location is Lampung, please enter "L003"

@@ -1,0 +1,10 @@
+ID001 | Edward Leonardo | 14/06/2002 | --/--/---- | 250 RM/Hr | 081359282894 | Ploso Timur | L001 | Surabaya | S001 | Basketball | R4.75 | 4 | 19
+ID002 | Jason Pringgo | 20/06/2002 | --/--/---- | 250 RM/Hr | 081923854756 | Ploso Timur | L001 | Surabaya | S002 | Archery | R4 | 1 | 4
+ID003 | Steven Edvardomaris Nau | 11/10/2002 | --/--/---- | 450 RM/Hr | 08192384756 | Victoria Cluster | L001 | Surabaya | S003 | Gymnastics | R2 | 1 | 2
+ID004 | Fransisca Eva | 04/10/2002 | --/--/---- | 300 RM/Hr | 08135928923284 | Lampung | L001 | Surabaya | S004 | Volleyball | R3 | 1 | 3
+ID005 | Moudy Wiyono | 30/06/2002 | --/--/---- | 350 RM/Hr | 0812837651934 | Ikan No.1 | L002 | Malang | S005 | Badminton | R5 | 1 | 5
+ID006 | William Wiraatmaja | 28/10/2002 | --/--/---- | 300 RM/Hr | 0921831623421348 | Surya Blok Ayam | L002 | Malang | S006 | Football | R4.5 | 2 | 9
+ID007 | Joseph Felix | 15/02/2002 | --/--/---- | 350 RM/Hr | 0193473572942 | 3 Rumah | L002 | Malang | S007 | Swimming | R0.0 | 0 | 0
+ID008 | Liliani Chandranata | 28/06/2002 | --/--/---- | 500 RM/Hr | 0193473572942 | DNatural | L003 | Lampung | S008 | Cricket | R0.0 | 0 | 0
+ID009 | Kevin Karnadi | 13/08/2002 | --/--/---- | 450 RM/Hr | 0193473572942 | Trimurti | L003 | Lampung | S009 | Table Tennis | R0.0 | 0 | 0
+ID010 | Marcella Grace | 13/09/2002 | --/--/---- | 250 RM/Hr | 0193473572942 | Gogo | L003 | Lampung | S010 | Tennis | R0.0 | 0 | 0

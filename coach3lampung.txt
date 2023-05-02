@@ -1,0 +1,3 @@
+ID008 | Liliani Chandranata | 28/06/2002 | --/--/---- | 500 RM/Hr | 0193473572942 | DNatural | L003 | Lampung | S008 | Cricket | R0.0 | 0 | 0
+ID009 | Kevin Karnadi | 13/08/2002 | --/--/---- | 450 RM/Hr | 0193473572942 | Trimurti | L003 | Lampung | S009 | Table Tennis | R0.0 | 0 | 0
+ID010 | Marcella Grace | 13/09/2002 | --/--/---- | 250 RM/Hr | 0193473572942 | Gogo | L003 | Lampung | S010 | Tennis | R0.0 | 0 | 0

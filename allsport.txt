@@ -1,0 +1,11 @@
+S001 | Basketball | L001 | Surabaya
+S002 | Archery | L001 | Surabaya
+S003 | Gymnastics | L001 | Surabaya
+S004 | Volleyball | L001 | Surabaya
+S005 | Badminton | L002 | Malang
+S006 | Football | L002 | Malang
+S007 | Swimming | L002 | Malang
+S008 | Cricket | L003 | Lampung
+S009 | Table Tennis | L003 | Lampung
+S010 | Tennis | L003 | Lampung
+S011 | Golf | L001 | Surabaya

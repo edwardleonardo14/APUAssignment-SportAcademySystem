@@ -1,0 +1,4 @@
+ID001 | Edward Leonardo | 14/06/2002 | --/--/---- | 250 RM/Hr | 081359282894 | Ploso Timur | L001 | Surabaya | S001 | Basketball | R4.75 | 4 | 19
+ID002 | Jason Pringgo | 20/06/2002 | --/--/---- | 250 RM/Hr | 081923854756 | Ploso Timur | L001 | Surabaya | S002 | Archery | R4 | 1 | 4
+ID003 | Steven Edvardomaris Nau | 11/10/2002 | --/--/---- | 450 RM/Hr | 08192384756 | Victoria Cluster | L001 | Surabaya | S003 | Gymnastics | R2 | 1 | 2
+ID004 | Fransisca Eva | 04/10/2002 | --/--/---- | 300 RM/Hr | 08135928923284 | Lampung | L001 | Surabaya | S004 | Volleyball | R3 | 1 | 3

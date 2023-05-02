@@ -1,0 +1,2990 @@
+//EDWARD LEONARDO
+//TP058284
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+1. FUNCTION role_selection()
+	begin
+		declare RS_select
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nPlease choose the role : "
+			  "\n1. Admin"
+			  "\n2. Student"
+			  "\n3. Guest"
+			  "\n4. Exit")
+		print("Please enter your choice based on the number : ")
+		read RS_select
+		
+		while(RS_select >= -100)
+			if(RS_select == 1)
+				call admin_login()
+			else if (RS_select == 2)
+				call reg_login()
+			else if (RS_select == 3)
+				call guest_main_menu()
+			else if (RS_select == 4)
+				call exit_menu()
+			else
+				while(RS_select >4 OR RS select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read RS_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+2. FUNCTION exit_menu()
+	begin
+		declare exitmenu_des
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("Thankyou, Have a nice day!")
+		print("Press '1' to go back to Role Selection, or enter any key to terminate the program")
+		read exitmenu_des
+		
+		if(exitmenu_des == 1)
+			call role_selection()
+		end if
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+3. FUNCTION admin_login()
+	begin
+		declare admin_ID, admin_pass, admin_login_choice
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Admin. Please enter your identification : ")
+		print("ID NAME : ")
+		read admin_ID
+		print("PASSWORD : ")
+		read admin_pass
+		
+		if(admin_ID == "edo14" and admin_pass == "test123")
+			admin_main_menu()
+		else:
+			print("Your ID or Password is incorrect, enter 1 to try again, or any other key to exit : ")
+			read admin_login_choice
+			if (admin_login_choice == "1")
+				call admin_login()
+			else
+				call exit_menu()
+			end if
+		end if
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+4. FUNCTION admin_main_menu()
+	begin
+		declare adminmm_select
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Admin, Please enter what records do you want to access : "
+              "\n1. Add Records"
+              "\n2. Display All Records"
+              "\n3. Search Specific Records"
+              "\n4. Sort and Display Records"
+              "\n5. Modify Records"
+              "\n6. Log Out"
+              "\n7. Exit")
+		print("Please enter your choice based on the number : ")
+		read adminmm_select
+		
+		while(adminmm_select >= -100)
+			if(adminmm_select == 1)
+				call add_main_menu()
+			else if (adminmm_select == 2)
+				call display_main_menu()
+			else if (adminmm_select == 3)
+				call search_main_menu()
+			else if (adminmm_select == 4)
+				call sort_main_menu()
+			else if (adminmm_select == 5)
+				call mod_main_menu()
+			else if (adminmm_select == 6)
+				call admin_login()
+			else if (adminmm_select == 7)
+				call exit_menu()
+			else
+				while(adminmm_select >7 OR adminmm_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read adminmm_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+5. FUNCTION add_main_menu()
+	begin
+		declare addmm_select
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Admin, Please enter what records do you want to add : "
+              "\n1. Add Coach Records"
+              "\n2. Add Sport Records"
+              "\n3. Add Sport Schedule Records"
+              "\n4. Back to Admin Main Menu"
+              "\n5. Exit")
+		print("Please enter your choice based on the number : ")
+		read addmm_select
+		
+		while(addmm_select >= -100)
+			if(addmm_select == 1)
+				call add_coach()
+			else if (addmm_select == 2)
+				call add_sport()
+			else if (addmm_select == 3)
+				call add_schedule()
+			else if (addmm_select == 4)
+				call admin_main_menu()
+			else if (addmm_select == 5)
+				call exit_menu()
+			else
+				while(addmm_select >5 OR addmm_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read addmm_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+6. FUNCTION add_coach()
+	begin
+		declare newcoach_IDcheck, newcoach_ID, newcoach_name, newcoach_datej, newcoach_datet, newcoach_pay, newcoach_phone,
+				newcoach_address, newcoach_loc, newcoach_indicator, newcoach_sport, newcoach_sportn, newcoach_rating,
+				newcoach_locn, newcoach_rating,newcoach_norating, newcoach_rsum, newcoach_final, newcoach_help, newcoach_des
+		declare newcoach_list = []
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		
+		newcoach_IDcheck = ID
+		call id_auto with Argument (newcoach_IDcheck), return to newcoach_ID
+		print("The New Coach's ID : ",newcoach_ID)
+		append newcoach_ID into newcoach_list
+
+		print("Enter the new coach's name : ")
+		read newcoach_name
+		append newcoach_name into newcoach_list
+
+		print("Enter the new coach's Join Date (dd/mm/yyyy) : ")
+		read newcoach_datej
+		append newcoach_datej into newcoach_list
+
+		print("Enter the new coach's Termination Date (If new, enter --/--/----) : ")
+		read newcoach_datet
+		append newcoach_datet into newcoach_list
+
+		print("Enter the new coach's Hourly Rates in RM (Example : if 200 MYR/Hr, then enter '200')(Range of pay is 100-500RM per hr) : ")
+		read newcoach_pay
+		while (newcoach_pay>500 OR newcoach_pay<100)
+			print("Wrong Input! The pay is out of range")
+			print("Enter the new coach's Hourly Rates in RM (Example : if 200 MYR/Hr, then enter '200')(Range of pay is 100-500RM per hr) : ")
+			read newcoach_pay
+		end while
+		append (newcoach_pay," RM/Hr") into newcoach_list
+
+		print("Enter the new coach Location's ID (Type 'help' if the Location ID list is needed) : ")
+		read newcoach_loc
+		while (newcoach_loc == help or newcoach_loc == HELP or newcoach_loc == Help)
+			Open File "help_locationID.txt" in Read mode
+			print("help_locationID.txt")
+			Close File "help_locationID.txt"
+			print("Enter the new coach Location's ID (Type 'help' if the Location ID list is needed) : ")
+			read newcoach_loc
+		end while
+
+		newcoach_indicator = 0
+		while (newcoach_indicator == 0)
+			if (newcoach_loc == L001)
+				newcoach_indicator = 1
+				append newcoach_loc into newcoach_list
+				append "Surabaya" into newcoach_list
+			else if (newcoach_loc == L002)
+				newcoach_indicator = 1
+				append newcoach_loc into newcoach_list
+				append "Malang" into newcoach_list
+			else if (newcoach_loc == L003)
+				newcoach_indicator = 1
+				append newcoach_loc into newcoach_list
+				append "Lampung" into newcoach_list
+			else
+				print("Wrong Input!")
+				print("Enter the new coach Location's ID (Type 'help' if the Location ID list is needed) : ")
+				read newcoach_loc
+				while (newcoach_loc == help or newcoach_loc == HELP or newcoach_loc == Help)
+					Open File "help_locationID.txt" in Read mode
+					print("help_locationID.txt")
+					Close File "help_locationID.txt"
+					print("Enter the new coach Location's ID (Type 'help' if the Location ID list is needed) : ")
+					read newcoach_loc
+			end if
+		end while
+		
+		call help_sport with Argument (newcoach_loc)
+		
+		print("Enter the new coach Sport's ID : ")
+		read newcoach_sport
+		append newcoach_sport into newcoach_list
+
+		call sportname_search with Argument (newcoach_sport), return to newcoach_sportn
+		append newcoach_sportn into newcoach_list
+
+		print("Enter the new coach's Rating (Enter '0.0' if the coach is new) : ")
+		read newcoach_rating
+		append newcoach_rating into newcoach_list
+
+		newcoach_norating = 0
+		append newcoach_norating into newcoach_list
+
+		call recordscoach_display with Argument (newcoach_list)
+
+		newcoach_locn = newcoach_list[8]
+		newcoach_pay = newcoach_list[4]
+		newcoach_rsum = 0
+
+		newcoach_final =(newcoach_ID+" | "+newcoach_name+" | "+newcoach_datej+" | "+newcoach_datet+" | "+newcoach_pay+" | "+newcoach_phone+" | "+newcoach_address+" | "+newcoach_loc+" | "+newcoach_locn+" | "+newcoach_sport+" | "+newcoach_sportn+" | "+"R"+newcoach_rating+" | "+newcoach_norating+" | "+newcoach_rsum+"\n")
+		print("Please enter '1' to enter the data into the database, or enter any key to quit back to Add Main Menu : ")
+		read newcoach_des
+		if (newcoach_des == 1)
+			Open File "allcoach.txt" in Append mode
+			Append newcoach_final into "allcoach.txt"
+			Close File "allcoach.txt"
+			if (newcoach_loc == L001)
+				Open File "coach1surabaya.txt" in Append Mode
+				Append newcoach_final into "coach1surabaya.txt"
+				Close File "coach1surabaya.txt"
+			else if (newcoach_loc == L002)
+				Open File "coach2malang.txt" in Append Mode
+				Append newcoach_final into "coach2malang.txt"
+				Close File "coach2malang.txt"
+			else if (newcoach_loc == L003)
+				Open File "coach3lampung.txt" in Append Mode
+				Append newcoach_final into "coach3lampung.txt"
+				Close File "coach3lampung.txt"
+			end if
+			print("Save Successful!\nPress anything to go back to Add Main Menu")
+			read newcoach_des
+			call add_main_menu()
+		else
+			print("OK, press anything to go back to Add Main Menu")
+			read newcoach_des
+			call add_main_menu()
+		end if
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+7. FUNCTION add_sport()
+	begin
+		declare newsport_IDcheck, newsport_ID, newsport_name, newsport_loc, newsport_indicator
+				newsport_final, newsport_help, newsport_des
+		declare newsport_list = []
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		
+		newsport_IDcheck = S
+		call id_auto with Argument (newsport_IDcheck), return to newsport_ID
+		print("The New Sport's ID : ",newsport_ID)
+		append newsport_ID into newsport_list
+
+		print("Enter the new sport's name : ")
+		read newsport_name
+		append newsport_name into newsport_list
+
+		print("Enter the new sport Location's ID (Type 'help' if the Location ID list is needed) : ")
+		read newsport_loc
+		while (newsport_loc == help or newsport_loc == HELP or newsport_loc == Help)
+			Open File "help_locationID.txt" in Read mode
+			print("help_locationID.txt")
+			Close File "help_locationID.txt"
+			print("Enter the new sport Location's ID (Type 'help' if the Location ID list is needed) : ")
+			read newsport_loc
+		end while
+
+		newsport_indicator = 0
+		while (newsport_indicator == 0)
+			if (newsport_loc == L001)
+				newsport_indicator = 1
+				append newsport_loc into newsport_list
+				append "Surabaya" into newsport_list
+			else if (newsport_loc == L002)
+				newsport_indicator = 1
+				append newsport_loc into newsport_list
+				append "Malang" into newsport_list
+			else if (newsport_loc == L003)
+				newsport_indicator = 1
+				append newsport_loc into newsport_list
+				append "Lampung" into newsport_list
+			else
+				print("Wrong Input!")
+				print("Enter the new sport Location's ID (Type 'help' if the Location ID list is needed) : ")
+				read newsport_loc
+				while (newsport_loc == help or newsport_loc == HELP or newsport_loc == Help)
+					Open File "help_locationID.txt" in Read mode
+					print("help_locationID.txt"
+					Close File "help_locationID.txt"
+					print("Enter the new sport Location's ID (Type 'help' if the Location ID list is needed) : ")
+					read newsport_loc
+			end if
+		end while
+		
+		call recordssport_display with Argument (newsport_list)
+
+		newsport_locn = strnewsport_list[3]
+		newsport_final = (newsport_ID+" | "+newsport_name+" | "+newsport_loc+" | "+newsport_locn+"\n")
+		print("Please enter '1' to enter the data into the database, or enter any key to quit back to Add Main Menu : ")
+		read newsport_des
+		if (newsport_des == 1)
+			Open File "allsport.txt" in Append mode
+			Append newsport_final into "allsport.txt"
+			Close File "allsport.txt"
+			if (newsport_loc == L001)
+				Open File "sport1surabaya.txt" in Append Mode
+				Append newsport_final into "sport1surabaya.txt"
+				Close File "sport1surabaya.txt"
+			else if (newsport_loc == L002)
+				Open File "sport2malang.txt" in Append Mode
+				Append newsport_final into "sport2malang.txt"
+				Close File "sport2malang.txt"
+			else if (newsport_loc == L003)
+				Open File "sport3lampung.txt" in Append Mode
+				Append newsport_final into "sport3lampung.txt"
+				Close File "sport3lampung.txt"
+			end if
+			print("Save Successful!\nPress anything to go back to Add Main Menu")
+			read newsport_des
+			call add_main_menu()
+		else
+			print("OK, press anything to go back to Add Main Menu")
+			read newsport_des
+			call add_main_menu()
+		end if
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+8. FUNCTION add_schedule()
+	begin
+		declare newsch_IDcheck, newsch_ID, newsch_LID, newsch_indicator, newsch_SID, newsch_SIDn, newsch_CID, newsch_CID
+				newsch_CIDn, newsch_day, newsch_stime, newsch_stimet, newsch_dura, newsch_schID, newsch_LIDn, newsch_stimef
+				newsch_duraf, newsch_final, newsch_des
+		declare newsch_list = []
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		
+		newsch_IDcheck = SCH
+		call id_auto with Argument (newsch_IDcheck), return to newsch_ID
+		print("The New Schedule's ID : ",newsport_ID)
+		append newsch_ID into newsch_list
+
+		print("Enter the new schedule Location's ID (Type 'help' if the Location ID list is needed) : ")
+		read newsch_LID
+		while (newsch_LID == help or newsch_LID == HELP or newsch_LID == Help)
+			Open File "help_locationID.txt" in Read mode
+			print("help_locationID.txt")
+			Close File "help_locationID.txt"
+			print("Enter the new schedule Location's ID (Type 'help' if the Location ID list is needed) : ")
+			read newsch_LID
+		end while
+
+		newsch_indicator = 0
+		while (newsch_indicator == 0)
+			if (newsch_LID == L001)
+				newsch_indicator = 1
+				append newsch_LID into newsch_list
+				append "Surabaya" into newsch_list
+			else if (newsch_LID == L002)
+				newsch_indicator = 1
+				append newsch_LID into newsch_list
+				append "Malang" into newsch_list
+			else if (newsch_LID == L003)
+				newsch_indicator = 1
+				append newsch_LID into newsch_list
+				append "Lampung" into newsch_list
+			else
+				print("Wrong Input!")
+				print("Enter the new schedule Location's ID (Type 'help' if the Location ID list is needed) : ")
+				read newsch_LID
+				while (newsch_LID == help or newsch_LID == HELP or newsch_LID == Help)
+					Open File "help_locationID.txt" in Read mode
+					print("help_locationID.txt")
+					Close File "help_locationID.txt"
+					print("Enter the new schedule Location's ID (Type 'help' if the Location ID list is needed) : ")
+					read newsch_LID
+			end if
+		end while
+		
+		call help_sport with Argument (newsch_LID)
+		print("Enter the Sport's ID of the lesson : "))
+		read newsch_SID
+		append newsch_SID into newsch_list
+
+		call sportname_search with Argument (newsch_SID), return into newsch_SIDn
+		append newsch_SIDn into newsch_list
+
+		call help_coach with Argument (newsch_LID,newsch_SID)
+		print("Enter the Coach's ID of the lesson : ")
+		read newsch_CID
+		append newsch_CID into newsch_list
+
+		call coachname_search with Argument (newsch_CID), return into newsch_CIDn
+		append newsch_CIDn into newsch_list 
+
+		print("Enter the lesson day in number (Monday is 1) (Type 'help' if the number list is needed) : ")
+		read newsch_day
+		while (newsch_day == "help" OR newsch_day == "HELP" OR newsch_day == "Help")
+			print ("\nThe Day Number List : \nMonday\t\t= 1\nTuesday\t\t= 2\nWednesday\t= 3\nThursday\t= 4\nFriday\t\t= 5\nSaturday\t= 6\nSunday\t\t= 7")
+			print("Enter the lesson day in number (Monday is 1) (Type 'help' if the number list is needed) : ")
+			read newsch_day
+		end while
+
+		while (newsch_day>7 OR newsch_day<1)
+			print("Wrong Input!")
+			print("Enter the lesson day in number (Monday is 1) (Type 'help' if the number list is needed) : "))
+			read newsch_day
+			while (newsch_day == "help" or newsch_day == "HELP" or newsch_day == "Help")
+				print ("\nThe Day Number List : \nMonday\t\t= 1\nTuesday\t\t= 2\nWednesday\t= 3\nThursday\t= 4\nFriday\t\t= 5\nSaturday\t= 6\nSunday\t\t= 7")
+				print("Enter the lesson day in number (Monday is 1) (Type 'help' if the number list is needed) : ")
+				read newsch_day
+			end while
+		
+		if(newsch_day == 1)
+        	append "Monday" into newsch_list
+		else if(newsch_day == 2)
+			append "Tuesday" into newsch_list
+		else if(newsch_day == 3)
+			append "Wednesday" into newsch_list
+		else if(newsch_day == 4)
+			append "Thursday" into newsch_list
+		else if(newsch_day == 5)
+			append "Friday" into newsch_list
+		else if(newsch_day == 6)
+			append "Saturday" into newsch_list
+		else if(newsch_day == 7)
+			append "Sunday" into newsch_list
+		end if
+		
+		print("Enter the lesson starting time in thousand (05.00 = 5 am, 17.00 = 5 pm)(Type 'help' if assistance is needed) : ")
+		read newsch_stime
+		while (newsch_stime == "help" OR newsch_stime == "HELP" OR newsch_stime == "Help")
+			Open File "help_time.txt" in Read Mode
+			print("help_time.txt")
+			Close File "help_time.txt"
+			print("Enter the lesson starting time in thousand (05.00 = 5 am, 17.00 = 5 pm)(Type 'help' if assistance is needed) : ")
+			read newsch_stime
+		end while
+
+		newsch_stimet = newsch_stime
+
+		while (newsch_stime<00.00 OR newsch_stime>23.59)
+			print("Wrong Input!")
+			print("Enter the lesson starting time in thousand (05.00 = 5 am, 17.00 = 5 pm)(Type 'help' if assistance is needed) : ")
+			read newsch_stime
+			while (newsch_stime == "help" OR newsch_stime == "HELP" OR newsch_stime == "Help")
+				Open File "help_time.txt" in Read Mode
+				print("help_time.txt")
+				Close File "help_time.txt"
+				print("Enter the lesson starting time in thousand (05.00 = 5 am, 17.00 = 5 pm)(Type 'help' if assistance is needed) : ")
+				read newsch_stime
+			end while
+			newsch_stimet = newsch_stime
+		end while
+
+		if (newsch_stime>= 00.00 and newsch_stime<=11.59)
+        	append (newsch_stimet+" AM") into newsch_list
+    	else
+        	append (newsch_stimet+" PM") into newsch_list
+		end if
+
+		print("Enter the lesson time duration in minutes (1 Hour = 60 Minutes)(Maximum Duration is 180 Minutes/3 Hours) : ")
+		read newsch_dura
+		while (newsch_dura<0 or newsch_dura>180)
+			print("Wrong Input!")
+			print("Enter the lesson time duration in minutes (1 Hour = 60 Minutes)(Maximum Duration is 180 Minutes/3 Hours) : ")
+			read newsch_dura
+		end while
+		append (newsch_dura+" Minutes") into newsch_list
+
+		call recordsschedule_display with Argument (newsch_list)
+
+		newsch_schID = newsch_list[0]
+		newsch_LIDn = newsch_list[2]
+		newsch_day = newsch_list[7]
+		newsch_stimef = newsch_list[8]
+		newsch_duraf = newsch_list[9]
+		newsch_final = (newsch_schID+" | "+newsch_LID+" | "+newsch_LIDn+" | "+newsch_SID+" | "+newsch_SIDn+" | "+newsch_CID+" | "+newsch_CIDn+" | "+newsch_day+" | "+newsch_stimef+" | "+newsch_duraf+"\n")
+		print("Please enter '1' to enter the data into the database, or enter any key to quit back to Add Main Menu : ")
+		read newsch_des
+		if (newsch_des == 1)
+			Open File "allsportschedule.txt" in Append mode
+			Append newsch_final into "allsportschedule.txt"
+			Close File "allsportschedule.txt"
+			if (newsch_LID == L001)
+				Open File "sportschedule1surabaya.txt" in Append Mode
+				Append newsch_final into "sportschedule1surabaya.txt"
+				Close File "sportschedule1surabaya.txt"
+			else if (newsch_LID == L002)
+				Open File "sportschedule2malang.txt" in Append Mode
+				Append newsch_final into "sportschedule2malang.txt"
+				Close File "sportschedule2malang.txt"
+			else if (newsch_LID == L003)
+				Open File "sportschedule3lampung.txt" in Append Mode
+				Append newsch_final into "sportschedule3lampung.txt"
+				Close File "sportschedule3lampung.txt"
+			end if
+			print("Save Successful!\nPress anything to go back to Add Main Menu")
+			read newsch_des
+			call add_main_menu()
+		else
+			print("OK, press anything to go back to Add Main Menu")
+			read newsch_des
+			call add_main_menu()
+		end if
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+9. FUNCTION display_main_menu()
+	begin
+		declare recordsmm_select
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Admin, Please enter what records do you want to display : "
+              "\n1. Display Coach Records"
+              "\n2. Display Sport Records"
+              "\n3. Display Registered Student Records"
+              "\n4. Back to Admin Main Menu"
+              "\n5. Exit")
+		print("Please enter your choice based on the number : ")
+		read recordsmm_select
+		
+		while(recordsmm_select >= -100)
+			if(recordsmm_select == 1)
+				call display_coach()
+			else if (recordsmm_select == 2)
+				call display_sport()
+			else if (recordsmm_select == 3)
+				call display_reg()
+			else if (recordsmm_select == 4)
+				call admin_main_menu()
+			else if (recordsmm_select == 5)
+				call exit_menu()
+			else
+				while(recordsmm_select >5 OR recordsmm_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read recordsmm_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+10. FUNCTION display_coach()
+	begin
+		declare recordscoach_select
+		declare recordscoach_list = []
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Admin, Please enter what records do you want to display : "
+              "\n1. Coach in all Locations"
+              "\n2. Coach in Surabaya"
+              "\n3. Coach in Malang"
+              "\n4. Coach in Lampung"
+              "\n5. Back to Display Main Menu"
+              "\n6. Exit")
+		print("Please enter your choice based on the number : ")
+		read recordscoach_select
+		
+		while(recordscoach_select >= 0)
+			if(recordscoach_select == 1)
+				Open File "allcoach.txt" in Read Mode
+				LOOP line in "allcoach.txt"
+					call str_to_list_convert with Argument (line), return to recordscoach_list
+					call recordscoach_display with Argument (recordscoach_list)
+				end LOOP
+				Close File "allcoach.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordscoach_select
+				call display_main_menu()
+			else if (recordscoach_select == 2)
+				Open File "coach1surabaya.txt" in Read Mode
+				LOOP line in "coach1surabaya.txt"
+					call str_to_list_convert with Argument (line), return to recordscoach_list
+					call recordscoach_display with Argument (recordscoach_list)
+				end LOOP
+				Close File "coach1surabaya.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordscoach_select
+				call display_main_menu()
+			else if (recordscoach_select == 3)
+				Open File "coach2malang.txt" in Read Mode
+				LOOP line in "coach2malang.txt"
+					call str_to_list_convert with Argument (line), return to recordscoach_list
+					call recordscoach_display with Argument (recordscoach_list)
+				end LOOP
+				Close File "coach2malang.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordscoach_select
+				call display_main_menu()
+			else if (recordscoach_select == 4)
+				Open File "coach3lampung.txt" in Read Mode
+				LOOP line in "coach3lampung.txt"
+					call str_to_list_convert with Argument (line), return to recordscoach_list
+					call recordscoach_display with Argument (recordscoach_list)
+				end LOOP
+				Close File "coach3lampung.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordscoach_select
+				call display_main_menu()
+			else if (recordscoach_select == 5)
+				call display_main_menu()
+			else if (recordscoach_select == 6)
+				call exit_menu()
+			else
+				while(recordscoach_select >6 OR recordscoach_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read recordscoach_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+11. FUNCTION display_sport()
+	begin
+		declare recordssport_select
+		declare recordssport_list = []
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Admin, Please enter what records do you want to display : "
+              "\n1. Sport in all Locations"
+              "\n2. Sport in Surabaya"
+              "\n3. Sport in Malang"
+              "\n4. Sport in Lampung"
+              "\n5. Back to Display Main Menu"
+              "\n6. Exit")
+		print("Please enter your choice based on the number : ")
+		read recordssport_select
+		
+		while(recordssport_select >= 0)
+			if(recordssport_select == 1)
+				Open File "allsport.txt" in Read Mode
+				LOOP line in "allsport.txt"
+					call str_to_list_convert with Argument (line), return to recordssport_list
+					call recordssport_display with Argument (recordssport_list)
+				end LOOP
+				Close File "allsport.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordssport_select
+				call display_main_menu()
+			else if (recordssport_select == 2)
+				Open File "sport1surabaya.txt" in Read Mode
+				LOOP line in "sport1surabaya.txt"
+					call str_to_list_convert with Argument (line), return to recordssport_list
+					call recordssport_display with Argument (recordssport_list)
+				end LOOP
+				Close File "sport1surabaya.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordssport_select
+				call display_main_menu()
+			else if (recordssport_select == 3)
+				Open File "sport2malang.txt" in Read Mode
+				LOOP line in "sport2malang.txt"
+					call str_to_list_convert with Argument (line), return to recordssport_list
+					call recordssport_display with Argument (recordssport_list)
+				end LOOP
+				Close File "sport2malang.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordssport_select
+				call display_main_menu()
+			else if (recordssport_select == 4)
+				Open File "sport3lampung.txt" in Read Mode
+				LOOP line in "sport3lampung.txt"
+					call str_to_list_convert with Argument (line), return to recordssport_list
+					call recordssport_display with Argument (recordssport_list)
+				end LOOP
+				Close File "sport3lampung.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordssport_select
+				call display_main_menu()
+			else if (recordssport_select == 5)
+				call display_main_menu()
+			else if (recordssport_select == 6)
+				call exit_menu()
+			else
+				while(recordssport_select >6 OR recordssport_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read recordssport_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+12. FUNCTION display_reg()
+	begin
+		declare recordsreg_select
+		declare recordsreg_list = []
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Admin, Please enter what records do you want to display : "
+			  "\n1. Registered Student in all Locations"
+			  "\n2. Registered Student in Surabaya"
+			  "\n3. Registered Student in Malang"
+			  "\n4. Registered Student in Lampung"
+			  "\n5. Back to Display Main Menu"
+			  "\n6. Exit")
+		print("Please enter your choice based on the number : ")
+		read recordsreg_select
+		
+		while(recordsreg_select >= 0)
+			if(recordsreg_select == 1)
+				Open File "allregstudent.txt" in Read Mode
+				LOOP line in "allregstudent.txt" STEP 1
+					call str_to_list_convert with Argument (line), return to recordsreg_list
+					call recordsreg_display with Argument (recordsreg_list)
+				end LOOP
+				Close File "allregstudent.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordsreg_select
+				call display_main_menu()
+			else if (recordsreg_select == 2)
+				Open File "regstudent1surabaya.txt" in Read Mode
+				LOOP line in "regstudent1surabaya.txt"
+					call str_to_list_convert with Argument (line), return to recordsreg_list
+					call recordsreg_display with Argument (recordsreg_list)
+				end LOOP
+				Close File "regstudent1surabaya.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordsreg_select
+				call display_main_menu()
+			else if (recordsreg_select == 3)
+				Open File "regstudent2malang.txt" in Read Mode
+				LOOP line in "regstudent2malang.txt"
+					call str_to_list_convert with Argument (line), return to recordsreg_list
+					call recordsreg_display with Argument (recordsreg_list)
+				end LOOP
+				Close File "regstudent2malang.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordsreg_select
+				call display_main_menu()
+			else if (recordsreg_select == 4)
+				Open File "regstudent3lampung.txt" in Read Mode
+				LOOP line in "regstudent3lampung.txt"
+					call str_to_list_convert with Argument (line), return to recordsreg_list
+					call recordsreg_display with Argument (recordsreg_list)
+				end LOOP
+				Close File "regstudent3lampung.txt"
+				print("Press anything to go back to Records Main Menu")
+				read recordsreg_select
+				call display_main_menu()
+			else if (recordsreg_select == 5)
+				call display_main_menu()
+			else if (recordsreg_select == 6)
+				exit_menu()
+			else
+				while(recordsreg_select >6 OR recordsreg_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read recordsreg_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+13. FUNCTION search_main_menu()
+	begin
+		declare searchmm_select
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Admin, Please enter what records do you want to search : "
+            "\n1. Search Coach by Coach ID"
+            "\n2. Search Coach by Overall Performance/Rating"
+            "\n3. Sport by Sport ID"
+            "\n4. Student by Student ID"
+            "\n5. Back to Admin Main Menu"
+            "\n6. Exit")
+		print("Please enter your choice based on the number : ")
+		read searchmm_select
+		
+		while(searchmm_select >= -100)
+			if(searchmm_select == 1)
+				call search_coach_id()
+			else if (searchmm_select == 2)
+				call search_coach_rating()
+			else if (searchmm_select == 3)
+				call search_sport_id()
+			else if (searchmm_select == 4)
+				call search_student_id()
+			else if (searchmm_select == 5)
+				call admin_main_menu()
+			else if (searchmm_select == 6)
+				call exit_menu()
+			else
+				while(searchmm_select >6 OR searchmm_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read searchmm_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+14. FUNCTION search_coach_id()
+	begin
+		declare search_coachID
+		declare search_coachID_display = []
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("Please Enter the ID of the Coach you want to search : ")
+		read search_coachID
+
+		Open File "allcoach.txt" in Read Mode
+		LOOP line in "allcoach.txt"
+			if search_coachID in line
+				call str_to_list_convert With Argument (line), return into search_coachID_display
+				call recordscoach_display With Argument (search_coachID_display)
+			end if
+		else
+			print("No Data Found!")
+		end LOOP
+		Close File "allcoach.txt"
+		print("Press any key to return back to Search Main Menu")
+		read search_coachID
+		call search_main_menu()
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+15. FUNCTION search_coach_rating()
+	begin
+		declare search_coachrate
+		declare search_coachrate_display = []
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("Please Enter the rating of the Coach you want to search(Rx.x) : ")
+		read search_coachrate
+
+		Open File "allcoach.txt" in Read Mode
+		LOOP line in "allcoach.txt"
+			if search_coachrate in line
+				call str_to_list_convert With Argument (line), return into search_coachrate_display
+				call recordscoach_display With Argument (search_coachrate_display)
+			end if
+		else
+			print("No Data Found!")
+		end LOOP
+		Close File "allcoach.txt"
+		print("Press any key to return back to Search Main Menu")
+		read search_coachrate
+		call search_main_menu()
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+16. FUNCTION search_sport_id()
+	begin
+		declare search_sportID
+		declare search_sportID_display = []
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("Please Enter the ID of the Sport you want to search(IDxxx) : ")
+		read search_sportID
+
+		Open File "allsport.txt" in Read Mode
+		LOOP line in "allsport.txt"
+			if search_sportID in line
+				call str_to_list_convert With Argument (line), return into search_sportID_display
+				call recordssport_display With Argument (search_sportID_display)
+			end if
+		else
+			print("No Data Found!")
+		end LOOP
+		Close File "allsport.txt"
+		print("Press any key to return back to Search Main Menu")
+		read search_sportID
+		call search_main_menu()
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+17. FUNCTION search_student_id()
+	begin
+		declare search_studentID
+		declare search_studentID_display = []
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("Please Enter the ID of the student you want to search(IDxxx) : ")
+		read search_studentID
+
+		Open File "allregstudent.txt" in Read Mode
+		LOOP line in "allregstudent.txt"
+			if search_studentID in line
+				call str_to_list_convert With Argument (line), return into search_studentID_display
+				call recordsreg_display With Argument (search_studentID_display)
+			end if
+		else
+			print("No Data Found!")
+		end LOOP
+		Close File "allregstudent.txt"
+		print("Press any key to return back to Search Main Menu")
+		read search_studentID
+		call search_main_menu()
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+18. FUNCTION sort_main_menu()
+	begin
+		declare sortmm_select
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Admin, Please enter what records do you want to sort in ascending order : "
+              "\n1. Sort Coaches by Name"
+              "\n2. Sort Coaches by Hourly Pay Rate"
+              "\n3. Sort Coaches by Overall Performance/Rating"
+              "\n4. Back to Admin Main Menu"
+              "\n5. Exit")
+		print("Please enter your choice based on the number : ")
+		read sortmm_select
+		
+		while(sortmm_select >= -100)
+			if(sortmm_select == 1)
+				call sort_coach_name()
+			else if (sortmm_select == 2)
+				call sort_coach_pay()
+			else if (sortmm_select == 3)
+				call sort_coach_performance()
+			else if (sortmm_select == 4)
+				call admin_main_menu()
+			else if (sortmm_select == 5)
+				call exit_menu()
+			else
+				while(sortmm_select >5 OR sortmm_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read sortmm_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+19. FUNCTION sort_coach_name()
+	begin
+		declare sortname_datalist = [], sortname_blist = [], sortname_alist = [], sortname_finallist = [], sortname_namelist = []
+		declare sortname_length, a, b, x
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+
+		Open File "allcoach.txt" in Read mode
+		LOOP line in "allcoach.txt"
+			append line into sortname_datalist
+			call str_to_list_convert With Argument (line), return to sortname_namelist
+			append sortname_namelist[1] into sortname_blist
+		end LOOP
+
+		sortname_length = Length of sortname_blist
+		call bubble_sort With Argument (sortname_blist,sortname_length), return to sortname_alist
+
+		a = 0
+		b = 0
+
+		while ((Length of sortname_finallist) != sortname_length)
+			if sortname_alist[a] in sortname_datalist[b]
+				append sortname_datalist[b] into sortname_finallist
+				Pop sortname_datalist, position (b)
+				a = a + 1
+				b = 0
+			else:
+				b = b + 1
+		end while
+		x = 0
+
+		while (x != (Length of sortname_finallist))
+			call recordscoach_display With Argument (call str_to_list_convert With Argument (sortname_finallist[x]))
+			x = x + 1
+		end while
+		print("Press any key to return back to Sort Main Menu")
+		read x
+		call sort_main_menu()
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+20. FUNCTION sort_coach_pay()
+	begin
+		declare sortpay_datalist = [], sortpay_blist = [], sortpay_alist = [], sortpay_finallist = [], sortpay_namelist = []
+		declare sortpay_length, a, b, x
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+
+		Open File "allcoach.txt" in Read mode
+		LOOP line in "allcoach.txt"
+			append line into sortpay_datalist
+			call str_to_list_convert With Argument (line), return to sortpay_namelist
+			append sortpay_namelist[4] into sortpay_blist
+		end LOOP
+
+		sortpay_length = Length of sortpay_blist
+		call bubble_sort With Argument (sortpay_blist,sortpay_length), return to sortpay_alist
+
+		a = 0
+		b = 0
+
+		while ((Length of sortpay_finallist) != sortpay_length)
+			if sortpay_alist[a] in sortpay_datalist[b]
+				append sortpay_datalist[b] into sortpay_finallist
+				Pop sortpay_datalist, position (b)
+				a = a + 1
+				b = 0
+			else:
+				b = b + 1
+		end while
+		x = 0
+
+		while (x != (Length of sortpay_finallist))
+			call recordscoach_display With Argument (call str_to_list_convert With Argument (sortpay_finallist[x]))
+			x = x + 1
+		end while
+		print("Press any key to return back to Sort Main Menu")
+		read x
+		call sort_main_menu()
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+21. FUNCTION sort_coach_performance()
+	begin
+		declare sortperf_datalist = [], sortperf_blist = [], sortperf_alist = [], sortperf_finallist = [], sortperf_namelist = []
+		declare sortperf_length, a, b, x
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+
+		Open File "allcoach.txt" in Read mode
+		LOOP line in "allcoach.txt"
+			append line into sortperf_datalist
+			call str_to_list_convert With Argument (line), return to sortperf_namelist
+			append sortperf_namelist[11] into sortperf_blist
+		end LOOP
+
+		sortperf_length = Length of sortperf_blist
+		call bubble_sort With Argument (sortperf_blist,sortperf_length), return to sortperf_alist
+
+		a = 0
+		b = 0
+
+		while ((Length of sortperf_finallist) != sortperf_length)
+			if sortperf_alist[a] in sortperf_datalist[b]
+				append sortperf_datalist[b] into sortperf_finallist
+				Pop sortperf_datalist, position (b)
+				a = a + 1
+				b = 0
+			else:
+				b = b + 1
+		end while
+		x = 0
+
+		while (x != (Length of sortperf_finallist))
+			call recordscoach_display With Argument (call str_to_list_convert With Argument (sortperf_finallist[x]))
+			x = x + 1
+		end while
+		print("Press any key to return back to Sort Main Menu")
+		read x
+		call sort_main_menu()
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+22. FUNCTION mod_main_menu()
+	begin
+		declare modmm_select
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Admin, Please enter what records do you want to modify : "
+              "\n1. Modify Coach Data"
+              "\n2. Modify Sport Data"
+              "\n3. Modify Sport Schedule Data"
+              "\n4. Back to Admin Main Menu"
+              "\n5. Exit")
+		print("Please enter your choice based on the number : ")
+		read modmm_select
+		
+		while(modmm_select >= -100)
+			if(modmm_select == 1)
+				call mod_coach()
+			else if (modmm_select == 2)
+				call mod_sport()
+			else if (modmm_select == 3)
+				call mod_schedule()
+			else if (modmm_select == 4)
+				call admin_main_menu()
+			else if (modmm_select == 5)
+				call exit_menu()
+			else
+				while(modmm_select >5 OR modmm_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read modmm_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+23. FUNCTION mod_coach()
+	begin
+		declare modcoach_search, modcoach_position, modcoach_new, modcoach_removeindicator,
+		modcoach_locindicator, modcoach_des, final, modcoach_indicator, x, y, modcoach_add
+		declare modcoach_otherlist = [], modcoach_list = [], modcoach_newlist = []
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("Please enter the Coach ID that you want to modify : ")
+		read modcoach_search
+		modcoach_position = 0
+		Open File "allcoach.txt" in Read Mode
+		LOOP line in "allcoach.txt"
+			append line into modcoach_otherlist
+			if modcoach_search in line
+				Delete modcoach_otherlist, Position (modcoach_position)
+				call str_to_list_convert With Argument (line), return to modcoach_list
+				modcoach_removeindicator = modcoach_list[7]
+				call recordscoach_display With Argument (modcoach_list)
+				print("Is this the right coach data? Enter '1' if correct, or any key to go back to Modify Main Menu : ")
+				read modcoach_des
+				if (modcoach_des == 1)
+					append modcoach_list[0] into modcoach_newlist
+
+					print("Enter the coach's name (If the data still the same, type 'same') : ")
+					read modcoach_new
+					if (modcoach_new == "same" OR modcoach_new == "Same" OR modcoach_new == "SAME")
+						append modcoach_list[1] into modcoach_newlist
+					else
+						append modcoach_new into modcoach_newlist
+					end if
+
+					print("Enter the coach's Date Joined (dd/mm/yyyy) (If the data still the same, type 'same') : ")
+					read modcoach_new
+					if (modcoach_new == "same" OR modcoach_new == "Same" OR modcoach_new == "SAME")
+						append modcoach_list[2] into modcoach_newlist
+					else
+						append modcoach_new into modcoach_newlist
+					end if
+
+					print("Enter the coach's Date of Termination (dd/mm/yyyy) (If the data still the same, type 'same') : ")
+					read modcoach_new
+					if (modcoach_new == "same" OR modcoach_new == "Same" OR modcoach_new == "SAME")
+						append modcoach_list[3] into modcoach_newlist
+					else
+						append modcoach_new into modcoach_newlist
+					end if
+
+					print("Enter the coach's hourly rate in MYR () (Example : if 200 MYR/Hr, then enter '200')(Range of pay is 100-500RM per hr) (If the data still the same, type 'same') : ")
+					read modcoach_new
+					if (modcoach_new == "same" OR modcoach_new == "Same" OR modcoach_new == "SAME")
+						append modcoach_list[4] into modcoach_newlist
+					else
+						while (modcoach_new > 500 OR modcoach_new < 100)
+							print("Value is out of range!")
+							print("Enter the coach's hourly rate in MYR () (Example : if 200 MYR/Hr, then enter '200')(Range of pay is 100-500RM per hr) (If the data still the same, type 'same') : ")
+							read modcoach_new
+						end while
+						append (modcoach_new," RM/Hr") into modcoach_newlist
+					end if
+
+					print("Enter the coach's phone number (If the data still the same, type 'same') : ")
+					read modcoach_new
+					if (modcoach_new == "same" OR modcoach_new == "Same" OR modcoach_new == "SAME")
+						append modcoach_list[5] into modcoach_newlist
+					else
+						append modcoach_new into modcoach_newlist
+					end if
+
+					print("Enter the coach's address (If the data still the same, type 'same') : ")
+					read modcoach_new
+					if (modcoach_new == "same" OR modcoach_new == "Same" OR modcoach_new == "SAME")
+						append modcoach_list[6] into modcoach_newlist
+					else
+						append modcoach_new into modcoach_newlist
+					end if
+
+					print("Enter the coach's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+					read modcoach_new
+					while (modcoach_new == "help" or modcoach_new == "Help" or modcoach_new == "HELP")
+						Open File "help_locationID.txt" in Read Mode
+						print ("help_locationID.txt")
+						Close File "help_locationID.txt"
+						print("Enter the coach's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+						read modcoach_new
+					end while
+					if (modcoach_new == "same" OR modcoach_new == "Same" OR modcoach_new == "SAME")
+						append modcoach_list[7] into modcoach_newlist
+						append modcoach_list[8] into modcoach_newlist
+						modcoach_locindicator = modcoach_list[7]
+					else
+						modcoach_indicator = 0
+						while (modcoach_indicator == 0)
+							if (modcoach_new == "L001")
+								modcoach_indicator = 1
+                            	append modcoach_new into modcoach_newlist
+                            	append "Surabaya" into modcoach_newlist
+                            	modcoach_locindicator = "L001"
+							else if (modcoach_new == "L002")
+								modcoach_indicator = 1
+                            	append modcoach_new into modcoach_newlist
+                            	append "Malang" into modcoach_newlist
+                            	modcoach_locindicator = "L002"
+							else if (modcoach_new == "L003")
+								modcoach_indicator = 1
+                            	append modcoach_new into modcoach_newlist
+                            	append "Lampung" into modcoach_newlist
+                            	modcoach_locindicator = "L003"
+							else
+								print("Wrong Input!")
+								print("Enter the coach's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+								read modcoach_new
+								while (modcoach_new == "help" or modcoach_new == "Help" or modcoach_new == "HELP")
+									Open File "help_locationID.txt" in Read Mode
+									print ("help_locationID.txt")
+									Close File "help_locationID.txt"
+									print("Enter the coach's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+									read modcoach_new
+								end while
+							end if
+						end while
+					end if
+
+					print("Enter the coach's Sport ID (Type 'Help' if the list of Sport IDs is Needed) (If the data still the same, type 'same') : ")
+					read modcoach_new
+					if (modcoach_new == "same" OR modcoach_new == "Same" OR modcoach_new == "SAME")
+						append modcoach_list[9] into modcoach_newlist
+						append modcoach_list[10] into modcoach_newlist
+					else
+						append modcoach_new into modcoach_newlist
+						call sportname_search With Argument (modcoach_new), return to modcoach_new
+						append modcoach_new into modcoach_newlist
+					end if
+
+					append modcoach_list[11] into modcoach_newlist
+					append modcoach_list[12] into modcoach_newlist
+					append modcoach_list[13] into modcoach_newlist
+
+					call recordscoach_display With Argument (modcoach_newlist)
+					print("Please enter '1' to submit the modified the data, or enter any key to enter a new set of data : ")
+					read modcoach_des
+					if (modcoach_des == 1)
+						final = (modcoach_newlist[0]+" | "+modcoach_newlist[1]+" | "+modcoach_newlist[2]+" | "+modcoach_newlist[3]+" | "+modcoach_newlist[4]+" | "+modcoach_newlist[5]+" | "+modcoach_newlist[6]+" | "+modcoach_newlist[7]+" | "+modcoach_newlist[8]+" | "+modcoach_newlist[9]+" | "+modcoach_newlist[10]+" | "+modcoach_newlist[11]+" | "+modcoach_newlist[12]+" | "+modcoach_newlist[13]+"\n")
+						Insert final into modcoach_otherlist, position (modcoach_position)
+					else
+						call mod_coach()
+					end if
+				else :
+					call mod_main_menu()
+				end if
+			end if
+			modcoach_position = modcoach_position + 1
+		end LOOP
+		Close File "allcoach.txt"
+
+		Open File "allcoach.txt" in Write mode
+		LOOP x in range(modcoach_position)
+			y = (-modcoach_position+x)
+			modcoach_add = modcoach_otherlist[y]
+			Write modcoach_add into "allcoach.txt"
+		end LOOP
+		Close File "allcoach.txt"
+
+		modcoach_otherlist = []
+		modcoach_position = 0
+
+		if (modcoach_removeindicator == "L001")
+			Open File "coach1surabaya.txt" in Read Mode
+			LOOP line in "coach1surabaya.txt"
+				append line into modcoach_otherlist
+				if modcoach_search in line
+					Delete modcoach_otherlist, Position (modcoach_position)
+					modcoach_position = modcoach_position - 1
+				end if
+				modcoach_position = modcoach_position + 1
+			end LOOP
+			Close File "coach1surabaya.txt"
+
+			Open File "coach1surabaya.txt" in Write mode
+			LOOP x in range(modcoach_position)
+				y = (-modcoach_position+x)
+				modcoach_add = modcoach_otherlist[y]
+				Write modcoach_add into "coach1surabaya.txt"
+			end LOOP
+			Close File "coach1surabaya.txt"
+
+		else if (modcoach_removeindicator == "L002")
+			Open File "coach2malang.txt" in Read Mode
+			LOOP line in "coach2malang.txt"
+				append line into modcoach_otherlist
+				if modcoach_search in line
+					Delete modcoach_otherlist, Position (modcoach_position)
+					modcoach_position = modcoach_position - 1
+				end if
+				modcoach_position = modcoach_position + 1
+			end LOOP
+			Close File "coach2malang.txt"
+
+			Open File "coach2malang.txt" in Write mode
+			LOOP x in range(modcoach_position)
+				y = (-modcoach_position+x)
+				modcoach_add = modcoach_otherlist[y]
+				Write modcoach_add into "coach2malang.txt"
+			end LOOP
+			Close File "coach2malang.txt"
+
+		else if (modcoach_removeindicator == "L003")
+			Open File "coach3lampung.txt" in Read Mode
+			LOOP line in "coach3lampung.txt"
+				append line into modcoach_otherlist
+				if modcoach_search in line
+					Delete modcoach_otherlist, Position (modcoach_position)
+					modcoach_position = modcoach_position - 1
+				end if
+				modcoach_position = modcoach_position + 1
+			end LOOP
+			Close File "coach3lampung.txt"
+
+			Open File "coach3lampung.txt" in Write mode
+			LOOP x in range(modcoach_position)
+				y = (-modcoach_position+x)
+				modcoach_add = modcoach_otherlist[y]
+				Write modcoach_add into "coach3lampung.txt"
+			end LOOP
+			Close File "coach3lampung.txt"
+		end if
+
+		print("Done Deleting the data from old file, now printing the data into the new file")
+
+		if (modcoach_locindicator == "L001")
+			Open File "coach1surabaya.txt" in Append mode
+			Append Final into "coach1surabaya.txt"
+			Close File "coach1surabaya.txt"
+
+		else if (modcoach_locindicator == "L002")
+			Open File "coach2malang.txt" in Append mode
+			Append Final into "coach2malang.txt"
+			Close File "coach2malang.txt"
+
+		else if (modcoach_locindicator == "L003")
+			Open File "coach3lampung.txt" in Append mode
+			Append Final into "coach3lampung.txt"
+			Close File "coach3lampung.txt"
+		end if
+
+		print("Done, Press any key to return to go back to Modify Main Menu")
+		read modcoach_des
+		call mod_main_menu()
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+24. FUNCTION mod_sport()
+	begin
+		declare modsport_search, modsport_position, modsport_new, modsport_removeindicator,
+		modsport_locindicator, modsport_des, final, modsport_indicator, x, y, modsport_add
+		declare modsport_otherlist = [], modsport_list = [], modsport_newlist = []
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("Please enter the Sport ID that you want to modify : ")
+		read modsport_search
+		modsport_position = 0
+		Open File "allsport.txt" in Read Mode
+		LOOP line in "allsport.txt"
+			append line into modsport_otherlist
+			if modsport_search in line
+				Delete modsport_otherlist, Position (modsport_position)
+				call str_to_list_convert With Argument (line), return to modsport_list
+				modsport_removeindicator = modsport_list[2]
+				call recordssport_display With Argument (modsport_list)
+				print("Is this the right sport data? Enter '1' if correct, or any key to go back to Modify Main Menu : ")
+				read modsport_des
+				if (modsport_des == 1)
+					append modsport_list[0] into modsport_newlist
+
+					print("Enter the sport's name (If the data still the same, type 'same') : ")
+					read modsport_new
+					if (modsport_new == "same" or modsport_new == "Same" or modsport_new == "SAME")
+						append modsport_list[1] into modsport_newlist
+					else
+						append modsport_new into modsport_newlist
+					end if
+
+					print("Enter the sport's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+					read modsport_new
+					while (modsport_new == "help" or modsport_new == "Help" or modsport_new == "HELP")
+						Open File "help_locationID.txt" in Read Mode
+						print ("help_locationID.txt")
+						Close File "help_locationID.txt"
+						print("Enter the sport's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+						read modsport_new
+					end while
+					if (modsport_new == "same" OR modsport_new == "Same" OR modsport_new == "SAME")
+						append modsport_list[2] into modsport_newlist
+						append modsport_list[3] into modsport_newlist
+						modsport_locindicator = modsport_list[2]
+					else
+						modsport_indicator = 0
+						while (modsport_indicator == 0)
+							if (modsport_new == "L001")
+								modsport_indicator = 1
+                            	append modsport_new into modsport_newlist
+                            	append "Surabaya" into modsport_newlist
+                            	modsport_locindicator = "L001"
+							else if (modsport_new == "L002")
+								modsport_indicator = 1
+                            	append modsport_new into modsport_newlist
+                            	append "Malang" into modsport_newlist
+                            	modsport_locindicator = "L002"
+							else if (modsport_new == "L003")
+								modsport_indicator = 1
+                            	append modsport_new into modsport_newlist
+                            	append "Lampung" into modsport_newlist
+                            	modsport_locindicator = "L003"
+							else
+								print("Wrong Input!")
+								print("Enter the sport's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+								read modsport_new
+								while (modsport_new == "help" or modsport_new == "Help" or modsport_new == "HELP")
+									Open File "help_locationID.txt" in Read Mode
+									print ("help_locationID.txt")
+									Close File "help_locationID.txt"
+									print("Enter the sport's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+									read modsport_new
+								end while
+							end if
+						end while
+					end if
+
+					call recordssport_display With Argument (modsport_newlist)
+					print("Please enter '1' to submit the modified the data, or enter any key to enter a new set of data : ")
+					read modsport_des
+					if (modsport_des == 1)
+						final = (modsport_newlist[0]+" | "+modsport_newlist[1]+" | "+modsport_newlist[2]+" | "+modsport_newlist[3]+"\n")
+						Insert final into modsport_otherlist, position (modsport_position)
+					else
+						call mod_sport()
+					end if
+				else :
+					mod_main_menu()
+				end if
+			end if
+			modsport_position = modsport_position + 1
+		end LOOP
+		Close File "allsport.txt"
+
+		Open File "allsport.txt" in Write mode
+		LOOP x in range(modsport_position)
+			y = (-modsport_position+x)
+			modsport_add = modsport_otherlist[y]
+			Write modsport_add into "allsport.txt"
+		end LOOP
+		Close File "allsport.txt"
+
+		modsport_otherlist = []
+		modsport_position = 0
+
+		if (modsport_removeindicator == "L001")
+			Open File "sport1surabaya.txt" in Read Mode
+			LOOP line in "sport1surabaya.txt"
+				append line into modsport_otherlist
+				if modsport_search in line
+					Delete modsport_otherlist, Position (modsport_position)
+					modsport_position = modsport_position - 1
+				end if
+				modsport_position = modsport_position + 1
+			end LOOP
+			Close File "sport1surabaya.txt"
+
+			Open File "sport1surabaya.txt" in Write mode
+			LOOP x in range(modsport_position)
+				y = (-modsport_position+x)
+				modsport_add = modsport_otherlist[y]
+				Write modsport_add into "sport1surabaya.txt"
+			end LOOP
+			Close File "sport1surabaya.txt"
+
+		else if (modsport_removeindicator == "L002")
+			Open File "sport2malang.txt" in Read Mode
+			LOOP line in "sport2malang.txt"
+				append line into modsport_otherlist
+				if modsport_search in line
+					Delete modsport_otherlist, Position (modsport_position)
+					modsport_position = modsport_position - 1
+				end if
+				modsport_position = modsport_position + 1
+			end LOOP
+			Close File "sport2malang.txt"
+
+			Open File "sport2malang.txt" in Write mode
+			LOOP x in range(modsport_position)
+				y = (-modsport_position+x)
+				modsport_add = modsport_otherlist[y]
+				Write modsport_add into "sport2malang.txt"
+			end LOOP
+			Close File "sport2malang.txt"
+
+		else if (modsport_removeindicator == "L003")
+			Open File "sport3lampung.txt" in Read Mode
+			LOOP line in "sport3lampung.txt"
+				append line into modsport_otherlist
+				if modsport_search in line
+					Delete modsport_otherlist, Position (modsport_position)
+					modsport_position = modsport_position - 1
+				end if
+				modsport_position =modsport_position + 1
+			end LOOP
+			Close File "sport3lampung.txt"
+
+			Open File "sport3lampung.txt" in Write mode
+			LOOP x in range(modsport_position)
+				y = (-modsport_position+x)
+				modsport_add = modsport_otherlist[y]
+				Write modsport_add into "sport3lampung.txt"
+			end LOOP
+			Close File "sport3lampung.txt"
+		end if
+
+		print("Done Deleting the data from old file, now printing the data into the new file")
+
+		if (modsport_locindicator == "L001")
+			Open File "sport1surabaya.txt" in Append mode
+			Append Final into "sport1surabaya.txt"
+			Close File "sport1surabaya.txt"
+
+		else if (modsport_locindicator == "L002")
+			Open File "sport2malang.txt" in Append mode
+			Append Final into "sport2malang.txt"
+			Close File "sport2malang.txt"
+
+		else if (modsport_locindicator == "L003")
+			Open File "sport3lampung.txt" in Append mode
+			Append Final into "sport3lampung.txt"
+			Close File "sport3lampung.txt"
+		end if
+
+		print("Done, Press any key to return to go back to Modify Main Menu")
+		read modsport_des
+		call mod_main_menu()
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+25. FUNCTION mod_schedule()
+	begin
+		declare modschedule_search, modschedule_position, modschedule_new, modschedule_removeindicator,
+		modschedule_locindicator, modschedule_des, final, modschedule_indicator, x, y, modschedule_add
+		declare modschedule_otherlist = [], modschedule_list = [], modschedule_newlist = []
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("Please enter the Schedule ID that you want to modify : ")
+		read modschedule_search
+		modschedule_position = 0
+		Open File "allsportschedule.txt" in Read Mode
+		LOOP line in "allsportschedule.txt"
+			append line into modschedule_otherlist
+			if modschedule_search in line
+				Delete modschedule_otherlist, Position (modschedule_position)
+				call str_to_list_convert With Argument (line), return to modschedule_list
+				modschedule_removeindicator = modschedule_list[1]
+				call recordsschedule_display With Argument (modschedule_list)
+				print("Is this the right coach data? Enter '1' if correct, or any key to go back to Modify Main Menu : ")
+				read modschedule_des
+				if (modschedule_des == 1)
+					append modschedule_list[0] into modschedule_newlist
+
+					print("Enter the schedule's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+					read modschedule_new
+					while (modschedule_new == "help" OR modschedule_new == "HELP" OR modschedule_new == "Help")
+						Open File "help_locationID.txt" in Read Mode
+						print ("help_locationID.txt")
+						Close File "help_locationID.txt"
+						print("Enter the schedule's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+						read modschedule_new
+					end while
+
+					if (modschedule_new == "same" OR modschedule_new == "Same" OR modschedule_new == "SAME")
+						append modschedule_list[1] into modschedule_newlist
+						append modschedule_list[2] into modschedule_newlist
+						modschedule_locindicator = modschedule_list[1]
+					else
+						modschedule_indicator = 0
+						while (modschedule_indicator == 0)
+							if (modschedule_new == "L001")
+								modschedule_indicator = 1
+                            	append modschedule_new into modschedule_newlist
+                            	append "Surabaya" into modschedule_newlist
+                            	modschedule_locindicator = "L001"
+							else if (modschedule_new == "L002")
+								modschedule_indicator = 1
+                            	append modschedule_new into modschedule_newlist
+                            	append "Malang" into modschedule_newlist
+                            	modschedule_locindicator = "L002"
+							else if (modschedule_new == "L003")
+								modschedule_indicator = 1
+                            	append modschedule_new into modschedule_newlist
+                            	append "Lampung" into modschedule_newlist
+                            	modschedule_locindicator = "L003"
+							else
+								print("Wrong Input!")
+								print("Enter the schedule's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+								read modschedule_new
+								while (modschedule_new == "help" or modschedule_new == "Help" or modschedule_new == "HELP")
+									Open File "help_locationID.txt" in Read Mode
+									print ("help_locationID.txt")
+									Close File "help_locationID.txt"
+									print("Enter the schedule's Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+									read modschedule_new
+								end while
+							end if
+						end while
+					end if
+
+					call help_sport With Argument (modschedule_new)
+					print("Enter the Sport's ID of the lesson(If the data still the same, type 'same') : ")
+					read modschedule_new
+					if (modschedule_new == "same" OR modschedule_new == "Same" OR modschedule_new == "SAME")
+						append modschedule_list[3] into modschedule_newlist
+					else
+						append modschedule_new into modschedule_newlist
+					end if
+
+					call sportname_search With Argument (modschedule_new), return to modschedule_new
+                	append modschedule_new into modschedule_newlist
+
+					call help_coach With Argument (modschedule_newlist[1],modschedule_newlist[3])
+					print("Enter the Coach's ID of the lesson : ")
+					read modschedule_new
+					if (modschedule_new == "same" OR modschedule_new == "Same" OR modschedule_new == "SAME")
+						append modschedule_list[5] into modschedule_newlist
+					else
+						append modschedule_new into modschedule_newlist
+					end if
+
+					call coachname_search With Argument (modschedule_new), return to modschedule_new
+					append modschedule_new into modschedule_newlist
+
+					print("Enter the lesson day in number (Monday is 1) (Type 'help' if the number list is needed) : ")
+					read modschedule_new
+					while (modschedule_new == "help" OR modschedule_new == "HELP" OR modschedule_new == "Help")
+						print ("\nThe Day Number List : \nMonday\t\t= 1\nTuesday\t\t= 2\nWednesday\t= 3\nThursday\t= 4\nFriday\t\t= 5\nSaturday\t= 6\nSunday\t\t= 7")
+						print("Enter the lesson day in number (Monday is 1) (Type 'help' if the number list is needed) : ")
+						read modschedule_new
+					end while
+					
+					while (modschedule_new>7 OR modschedule_new<1)
+						print("Wrong Input!")
+						print("Enter the lesson day in number (Monday is 1) (Type 'help' if the number list is needed) : ")
+						read modschedule_new
+						while (modschedule_new == "help" OR modschedule_new == "HELP" OR modschedule_new == "Help")
+							print ("\nThe Day Number List : \nMonday\t\t= 1\nTuesday\t\t= 2\nWednesday\t= 3\nThursday\t= 4\nFriday\t\t= 5\nSaturday\t= 6\nSunday\t\t= 7")
+							print("Enter the lesson day in number (Monday is 1) (Type 'help' if the number list is needed) : ")
+							read modschedule_new
+						end while
+					end while
+
+					if(modschedule_new == 1)
+                    	append "Monday" into modschedule_newlist
+					else if(modschedule_new == 2)
+						append "Tuesday" into modschedule_newlist
+					else if(modschedule_new == 3)
+						append "Wednesday" into modschedule_newlist
+					else if(modschedule_new == 4)
+						append "Thursday" into modschedule_newlist
+					else if(modschedule_new == 5)
+						append "Friday" into modschedule_newlist
+					else if(modschedule_new == 6)
+						append "Saturday" into modschedule_newlist
+					else if(modschedule_new == 7)
+						append "Sunday" into modschedule_newlist
+					end if
+
+					print("Enter the lesson starting time in thousand (05.00 = 5 am, 17.00 = 5 pm)(Type 'help' if assistance is needed) : ")
+					read modschedule_new
+					while (modschedule_new == "help" OR modschedule_new == "HELP" OR modschedule_new == "Help")
+                    	Open File "help_time.txt" in Read Mode
+						print("help_time.txt")
+						Close File "help_time.txt"
+                    	print("Enter the lesson starting time in thousand (05.00 = 5 am, 17.00 = 5 pm)(Type 'help' if assistance is needed) : ")
+						read modschedule_new
+					end while
+
+					while (modschedule_new<00.00 OR modschedule_new>23.59)
+                    	print("Wrong Input!")
+						print("Enter the lesson starting time in thousand (05.00 = 5 am, 17.00 = 5 pm)(Type 'help' if assistance is needed) : ")
+						read modschedule_new
+						while (modschedule_new == "help" OR modschedule_new == "HELP" OR modschedule_new == "Help")
+							Open File "help_time.txt" in Read Mode
+							print("help_time.txt")
+							Close File "help_time.txt"
+							print("Enter the lesson starting time in thousand (05.00 = 5 am, 17.00 = 5 pm)(Type 'help' if assistance is needed) : ")
+							read modschedule_new
+						end while
+						modschedule_temp = modschedule_new
+					end while
+
+					if (modschedule_new>= 00.00 AND modschedule_new<=11.59)
+                    	append (modschedule_temp," AM") into modschedule.newlist
+                	else:
+                    	append (modschedule_temp," PM") into modschedule.newlist
+					end if
+
+					print("Enter the lesson time duration in minutes (1 Hour = 60 Minutes)(Maximum Duration is 180 Minutes/3 Hours) : ")
+					read modschedule_new
+					while (modschedule_new<0 or modschedule_new>180)
+						print("Wrong Input!")
+						print("Enter the lesson time duration in minutes (1 Hour = 60 Minutes)(Maximum Duration is 180 Minutes/3 Hours) : ")
+						read modschedule_new
+					end while
+					append (modschedule_new+" Minutes") into modschedule_newlist
+
+					call recordsschedule_display With Argument (modschedule_newlist)
+					print("Please enter '1' to submit the modified the data, or enter any key to enter a new set of data : ")
+					read modschedule_des
+					if (modschedule_des == 1)
+						final = (modschedule_newlist[0]+" | "+modschedule_newlist[1]+" | "+modschedule_newlist[2]+" | "+modschedule_newlist[3]+" | "+modschedule_newlist[4]+" | "+modschedule_newlist[5]+" | "+modschedule_newlist[6]+" | "+modschedule_newlist[7]+" | "+modschedule_newlist[8]+" | "+modschedule_newlist[9]+"\n")
+						Insert final into modschedule_otherlist, position (modschedule_position)
+					else
+						call mod_schedule()
+					end if
+				else :
+					mod_main_menu()
+				end if
+			end if
+			modschedule_position = modschedule_position + 1
+		end LOOP
+		Close File "allsportschedule.txt"
+
+		Open File "allsportschedule.txt" in Write mode
+		LOOP x in range(modschedule_position)
+			y = (-modschedule_position+x)
+			modschedule_add = modschedule_otherlist[y]
+			Write modschedule_add into "allsportschedule.txt"
+		end LOOP
+		Close File "allsportschedule.txt"
+
+		modschedule_otherlist = []
+		modschedule_position = 0
+
+		if (modschedule_removeindicator == "L001")
+			Open File "sportschedule1surabaya.txt" in Read Mode
+			LOOP line in "sportschedule1surabaya.txt"
+				append line into modschedule_otherlist
+				if modschedule_search in line
+					Delete modschedule_otherlist, Position (modschedule_position)
+					modschedule_position = modschedule_position - 1
+				end if
+				modschedule_position = modschedule_position + 1
+			end LOOP
+			Close File "sportschedule1surabaya.txt"
+
+			Open File "sportschedule1surabaya.txt" in Write mode
+			LOOP x in range(modschedule_position)
+				y = (-modschedule_position+x)
+				modschedule_add = modschedule_otherlist[y]
+				Write modschedule_add into "sportschedule1surabaya.txt"
+			end LOOP
+			Close File "sportschedule1surabaya.txt"
+
+		else if (modschedule_removeindicator == "L002")
+			Open File "sportschedule2malang.txt" in Read Mode
+			LOOP line in "sportschedule2malang.txt"
+				append line into modschedule_otherlist
+				if modschedule_search in line
+					Delete modschedule_otherlist, Position (modschedule_position)
+					modschedule_position = modschedule_position - 1
+				end if
+				modschedule_position = modschedule_position + 1
+			end LOOP
+			Close File "sportschedule2malang.txt"
+
+			Open File "sportschedule2malang.txt" in Write mode
+			LOOP x in range(modschedule_position)
+				y = (-modschedule_position+x)
+				modschedule_add = modschedule_otherlist[y]
+				Write modschedule_add into "sportschedule2malang.txt"
+			end LOOP
+			Close File "sportschedule2malang.txt"
+
+		else if (modschedule_removeindicator == "L003")
+			Open File "sportschedule3lampung.txt" in Read Mode
+			LOOP line in "sportschedule3lampung.txt"
+				append line into modschedule_otherlist
+				if modschedule_search in line
+					Delete modschedule_otherlist, Position (modschedule_position)
+					modschedule_position = modschedule_position - 1
+				end if
+				modschedule_position =modschedule_position + 1
+			end LOOP
+			Close File "sportschedule3lampung.txt"
+
+			Open File "sportschedule3lampung.txt" in Write mode
+			LOOP x in range(modschedule_position)
+				y = (-modschedule_position+x)
+				modschedule_add = modschedule_otherlist[y]
+				Write modschedule_add into "sportschedule3lampung.txt"
+			end LOOP
+			Close File "sportschedule3lampung.txt"
+		end if
+
+		print("Done Deleting the data from old file, now printing the data into the new file")
+
+		if (modschedule_locindicator == "L001")
+			Open File "sportschedule1surabaya.txt" in Append mode
+			Append Final into "sportschedule1surabaya.txt"
+			Close File "sportschedule1surabaya.txt"
+
+		else if (modschedule_locindicator == "L002")
+			Open File "sportschedule2malang.txt" in Append mode
+			Append Final into "sportschedule2malang.txt"
+			Close File "sportschedule2malang.txt"
+
+		else if (modschedule_locindicator == "L003")
+			Open File "sportschedule3lampung.txt" in Append mode
+			Append Final into "sportschedule3lampung.txt"
+			Close File "sportschedule3lampung.txt"
+		end if
+
+		print("Done, Press any key to return to go back to Modify Main Menu")
+		read modschedule_des
+		call mod_main_menu()
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+26. FUNCTION guest_main_menu()
+	begin
+		declare guestmm_select
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Guest, Please enter what do you want to access : "
+			  "\n1. View details of the sports available"
+			  "\n2. View details of the sport schedules"
+			  "\n3. Register to become a new student"
+			  "\n4. Go back to Role selection"
+			  "\n5. Exit)
+		print("Please enter your choice based on the number : ")
+		read guestmm_select
+		
+		while(guestmm_select >= -100)
+			if(guestmm_select == 1)
+				call guest_display_sport()
+			else if (guestmm_select == 2)
+				call guest_display_schedule()
+			else if (guestmm_select == 3)
+				call guest_register()
+			else if (guestmm_select == 4)
+				call role_selection()
+			else if (guestmm_select == 5)
+				call exit_menu()
+			else
+				while(guestmm_select >5 OR guestmm_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read guestmm_select
+				end while
+			end if
+		end while
+	end.		
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+27. FUNCTION guest_display_sport()
+	begin
+		declare recordssport_select
+		declare recordssport_list = []
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Guest, Please enter what records do you want to display : "
+              "\n1. Sport in all Locations"
+              "\n2. Sport in Surabaya"
+              "\n3. Sport in Malang"
+              "\n4. Sport in Lampung"
+              "\n5. Back to Guest Main Menu"
+              "\n6. Exit")
+		print("Please enter your choice based on the number : ")
+		read recordssport_select
+		
+		while(recordssport_select >= 0)
+			if(recordssport_select == 1)
+				Open File "allsport.txt" in Read Mode
+				LOOP line in "allsport.txt"
+					call str_to_list_convert with Argument (line), return to recordssport_list
+					call recordssport_display with Argument (recordssport_list)
+				end LOOP
+				Close File "allsport.txt"
+				print("Press anything to go back to Guest Main Menu")
+				read recordssport_select
+				call guest_main_menu()
+			else if (recordssport_select == 2)
+				Open File "sport1surabaya.txt" in Read Mode
+				LOOP line in "sport1surabaya.txt"
+					call str_to_list_convert with Argument (line), return to recordssport_list
+					call recordssport_display with Argument (recordssport_list)
+				end LOOP
+				Close File "sport1surabaya.txt"
+				print("Press anything to go back to Guest Main Menu")
+				read recordssport_select
+				call guest_main_menu()
+			else if (recordssport_select == 3)
+				Open File "sport2malang.txt" in Read Mode
+				LOOP line in "sport2malang.txt"
+					call str_to_list_convert with Argument (line), return to recordssport_list
+					call recordssport_display with Argument (recordssport_list)
+				end LOOP
+				Close File "sport2malang.txt"
+				print("Press anything to go back to Guest Main Menu")
+				read recordssport_select
+				call guest_main_menu()
+			else if (recordssport_select == 4)
+				Open File "sport3lampung.txt" in Read Mode
+				LOOP line in "sport3lampung.txt"
+					call str_to_list_convert with Argument (line), return to recordssport_list
+					call recordssport_display with Argument (recordssport_list)
+				end LOOP
+				Close File "sport3lampung.txt"
+				print("Press anything to go back to Guest Main Menu")
+				read recordssport_select
+				call guest_main_menu()
+			else if (recordssport_select == 5)
+				call guest_main_menu()
+			else if (recordssport_select == 6)
+				exit_menu()
+			else
+				while(recordssport_select >6 OR recordssport_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read recordssport_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+28. FUNCTION guest_display_schedule()
+	begin
+		declare recordsschedule_select
+		declare recordsschedule_list = []
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Guest, Please enter what records do you want to display : "
+              "\n1. Sport Schedule in all Locations"
+              "\n2. Sport Schedule in Surabaya"
+              "\n3. Sport Schedule in Malang"
+              "\n4. Sport Schedule in Lampung"
+              "\n5. Back to Guest Main Menu"
+              "\n6. Exit")
+		print("Please enter your choice based on the number : ")
+		read recordsschedule_select
+		
+		while(recordsschedule_select >= 0)
+			if(recordsschedule_select == 1)
+				Open File "allsportschedule.txt" in Read Mode
+				LOOP line in "allsportschedule.txt"
+					call str_to_list_convert with Argument (line), return to recordsschedule_list
+					call recordsschedule_display with Argument (recordsschedule_list)
+				end LOOP
+				Close File "allsportschedule.txt"
+				print("Press anything to go back to Guest Main Menu")
+				read recordsschedule_select
+				call guest_main_menu()
+			else if (recordsschedule_select == 2)
+				Open File "sportschedule1surabaya.txt" in Read Mode
+				LOOP line in "sportschedule1surabaya.txt"
+					call str_to_list_convert with Argument (line), return to recordsschedule_list
+					call recordsschedule_display with Argument (recordsschedule_list)
+				end LOOP
+				Close File "sportschedule1surabaya.txt"
+				print("Press anything to go back to Guest Main Menu")
+				read recordsschedule_select
+				call guest_main_menu()
+			else if (recordsschedule_select == 3)
+				Open File "sportschedule2malang.txt" in Read Mode
+				LOOP line in "sportschedule2malang.txt"
+					call str_to_list_convert with Argument (line), return to recordsschedule_list
+					call recordsschedule_display with Argument (recordsschedule_list)
+				end LOOP
+				Close File "sportschedule2malang.txt"
+				print("Press anything to go back to Guest Main Menu")
+				read recordsschedule_select
+				call guest_main_menu()
+			else if (recordsschedule_select == 4)
+				Open File "sportschedule3lampung.txt" in Read Mode
+				LOOP line in "sportschedule3lampung.txt"
+					call str_to_list_convert with Argument (line), return to recordsschedule_list
+					call recordsschedule_display with Argument (recordsschedule_list)
+				end LOOP
+				Close File "sportschedule3lampung.txt"
+				print("Press anything to go back to Guest Main Menu")
+				read recordsschedule_select
+				call guest_main_menu()
+			else if (recordsschedule_select == 5)
+				call guest_main_menu()
+			else if (recordsschedule_select == 6)
+				exit_menu()
+			else
+				while(recordsschedule_select >6 OR recordsschedule_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read recordsschedule_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+29. FUNCTION guest_register()
+	begin
+		declare guestreg_IDcheck, guestreg_ID, guestreg_username, guestreg_pass, guestreg_name, guestreg_age
+				guestreg_address, guestreg_phone, guestreg_LID, guestreg_indicator, guestreg_LIDn, guestreg_SID
+				guestreg_SIDn, guestreg_des, guestreg_checklist
+		declare guestreg_list = []
+		print (60*"-")
+		print ("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("Hello new User!")
+		
+		guestreg_IDcheck = ID
+		call id_auto with Argument (guestreg_IDcheck), return to guestreg_ID
+		print("Your new ID is : ",guestreg_ID)
+		append guestreg_ID into guestreg_list
+
+		print("Enter your Username : ")
+		read guestreg_username
+		Open File "allregstudent.txt" in Read Mode
+		LOOP line in "allregstudent.txt"
+			call str_to_list_convert with Argument (line), return to guestreg_checklist
+			while (guestreg_username == guestreg_checklist[1])
+				print("Sorry, the username has been taken. Please try again!")
+				read guestreg_username
+			end while
+		end LOOP
+		append guestreg_username into guestreg_list
+
+		print("Enter your Password (Mininum 8 character long) : ")
+		read guestreg_pass
+			while ((Length of guestreg_pass) < 8)
+				print("The Password is too short! Please enter a new one! ")
+				print("Enter your Password (Mininum 8 character long) : ")
+				read guestreg_pass
+			end while
+		append guestreg_pass into guestreg_list
+
+		print("Enter your Name : ")
+		read guestreg_name
+		append guestreg_name into guestreg_list
+
+		print("Enter your Age : ")
+		read guestreg_age
+		append guestreg_age into guestreg_list
+
+		print("Enter your Address : ")
+		read guestreg_address
+		append guestreg_address into guestreg_list
+
+		print("Enter your Phone Number : ")
+		read guestreg_phone
+		append guestreg_phone into guestreg_list
+
+		print("Enter your Location ID (Type 'help' if the Location ID list is needed) : ")
+		read guestreg_LID
+		while (guestreg_LID == "help" or guestreg_LID == "HELP" or guestreg_LID == "Help")
+			Open File "help_locationID.txt" in Read mode
+			print("help_locationID.txt")
+			Close File "help_locationID.txt"
+			print("Enter your Location ID (Type 'help' if the Location ID list is needed) : ")
+			read guestreg_LID
+		end while
+
+		guestreg_indicator = 0
+		while (guestreg_indicator == 0)
+			if (guestreg_LID == "L001")
+				guestreg_indicator = 1
+				append guestreg_LID into guestreg_list
+				append "Surabaya" into guestreg_list
+			else if (guestreg_LID == "L002")
+				guestreg_indicator = 1
+				append guestreg_LID into guestreg_list
+				append "Malang" into guestreg_list
+			else if (guestreg_LID == "L003")
+				guestreg_indicator = 1
+				append guestreg_LID into guestreg_list
+				append "Lampung" into guestreg_list
+			else
+				print("Wrong Input!")
+				print("Enter your Location ID (Type 'help' if the Location ID list is needed) : ")
+				read guestreg_LID
+				while (guestreg_LID == "help" or guestreg_LID == "HELP" or guestreg_LID == "Help")
+					Open File "help_locationID.txt" in Read mode
+					print("help_locationID.txt")
+					Close File "help_locationID.txt"
+					print("Enter your Location ID (Type 'help' if the Location ID list is needed) : ")
+					read guestreg_LID
+				end while
+			end if
+		end while
+
+		guestreg_LIDn = guestreg_list[8]
+
+		call help_sport With Argument (guestreg_LID)
+		print("Enter your Sport ID : ")
+		read guestreg_SID
+		append guestreg_SID into guestreg_list
+
+		call sportname_search With Argument (guestreg_SID), return to guestreg_SIDn
+		append guestreg_SIDn into guestreg_list
+
+		call recordsreg_display With Argument (guestreg_list)
+		guestreg_final = (guestreg_ID+" | "+guestreg_username+" | "+guestreg_pass+" | "+guestreg_name+" | "+guestreg_age+" | "+guestreg_address+" | "+guestreg_phone+" | "+guestreg_LID+" | "+guestreg_LIDn+" | "+guestreg_SID+" | "+guestreg_SIDn+"\n")
+		print("Please enter '1' to enter the data into the database, or enter any key to quit back to Guest Main Menu : ")
+		read guestreg_des
+		if (guestreg_des == 1)
+			Open File "allregstudent.txt" in Append mode
+			Append guestreg_final into "allregstudent.txt"
+			Close File "allregstudent.txt"
+			if (guestreg_LID == L001)
+				Open File "regstudent1surabaya.txt" in Append mode
+				Append guestreg_final into "regstudent1surabaya.txt"
+				Close File "regstudent1surabaya.txt"
+			else if (guestreg_LID == L002)
+				Open File "regstudent2malang.txt" in Append mode
+				Append guestreg_final into "regstudent2malang.txt"
+				Close File "regstudent2malang.txt"
+			else if (guestreg_LID == L003)
+				Open File "regstudent3lampung.txt" in Append mode
+				Append guestreg_final into "regstudent3lampung.txt"
+				Close File "regstudent3lampung.txt"
+			print("Save Successful! Now you can try login!"
+        		  "\nPress anything to go back to Guest Main Menu")
+			read guestreg_des
+			guest_main_menu
+		else
+			print("OK, press anything to go back to Guest Main Menu")
+			read guestreg_des
+			guest_main_menu
+		end if
+	end
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+30. FUNCTION reg_login()
+	begin
+		declare reglogin_username, reglogin_pass, reglogin_des
+		declare reglogin_list = []
+		print (60*"-")
+    	print ("\tWELCOME TO CHAMPION CLUB!")
+    	print("\tVIOLENCE, SPEED, MOMENTUM!")
+    	print("\nHello Student. Please enter your identification : ")
+		Open File "allregstudent.txt" in Read Mode
+		print("Username : ")
+		read reglogin_username
+		print("Password : ")
+		read reglogin_pass
+
+		LOOP line in "allregstudent.txt"
+			call str_to_list_convert With Argument (line), return to reglogin_list
+			if(reglogin_username == reglogin_list[1] AND reglogin_pass == reglogin_list[2])
+				print("Login Successful!")
+				call reg_main_menu With Argument (reglogin_list[0],reglogin_list[9])
+			end if
+		else
+			print("Username or Password is wrong! Enter '1' to try again, or enter any other key to go back to role selection menu : ")
+			read reglogin_des
+			if (reglogin_des == 1)
+				reg_login()
+			else
+				role_selection()
+			end if
+		end LOOP
+		Close File "allregstudent.txt"
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+31. FUNCTION reg_main_menu(studentid,studentsportid)
+	begin
+		declare regmm_select
+		print(60*"-")
+		print("\tWELCOME TO CHAMPION CLUB!")
+		print("\tVIOLENCE, SPEED, MOMENTUM!")
+		print("\nHello Student, Please enter what records do you want to access : "
+              "\n1. Add Records"
+              "\n2. Display All Records"
+              "\n3. Search Specific Records"
+              "\n4. Sort and Display Records"
+              "\n5. Modify Records"
+              "\n6. Log Out"
+              "\n7. Exit")
+		print("Please enter your choice based on the number : ")
+		read regmm_select
+		
+		while(regmm_select >= -100)
+			if(regmm_select == 1)
+				call reg_display_coach With Argument (studentid,studentsportid)
+			else if (regmm_select == 2)
+				call reg_display_selfrecord With Argument (studentid,studentsportid)
+			else if (regmm_select == 3)
+				call reg_display_schedule With Argument (studentid,studentsportid)
+			else if (regmm_select == 4)
+				call mod_selfrecord With Argument (studentid,studentsportid)
+			else if (regmm_select == 5)
+				call reg_feedback With Argument (studentid,studentsportid)
+			else if (regmm_select == 6)
+				call reg_login()
+			else if (regmm_select == 7)
+				call exit_menu()
+			else
+				while(regmm_select >7 OR regmm_select < 1)
+					print("\nInvalid number!")
+					print("Please enter your choice based on the number : ")
+					read regmm_select
+				end while
+			end if
+		end while
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+32. FUNCTION reg_display_coach(studentid,studentsportid)
+	begin
+		declare regdisplayc_sportn, regdisplayc_des, remove
+		declare regdisplayc_list = []
+		print (60*"-")
+    	print ("\tWELCOME TO CHAMPION CLUB!")
+    	print("\tVIOLENCE, SPEED, MOMENTUM!")
+    	Open File "allcoach.txt" in Read mode
+		call sportname_search With Argument (studentsportid), return to regdisplayc_sportn
+    	print("This is the Available Coach for ",regdisplayc_sportn," : ")
+    	LOOP line in "allcoach.txt"
+        	if (studentsportid in line)
+            	call str_to_list_convert With Argument (line), return to regdisplayc_list
+            	remove =  Pop regdisplayc_list, Position (11)
+            	In Remove, replace ("R") with ("")
+            	Insert remove into regdisplayc_list, position (11)
+            	print("\n\nCOACH ID\t\t: ",regdisplayc_list[0])
+            	print("COACH NAME\t\t: ",regdisplayc_list[1])
+            	print("LOCATION NAME\t\t: ",regdisplayc_list[8])
+            	print("SPORT NAME\t\t: ",regdisplayc_list[10])
+            	print("RATING\t\t\t: ",regdisplayc_list[11])
+            	print("NUMBER OF RATING\t: ",regdisplayc_list[12])
+			end if
+		end LOOP
+		Close File "allcoach.txt"
+    	print("Press anything to go back to Main Menu")
+		read regdisplayc_des
+    	call reg_main_menu With Argument (studentid,studentsportid)
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+33. FUNCTION reg_display_schedule(studentid,studentsportid)
+	begin
+		declare regdisplaysch_des
+		declare regdisplaysch_list = []
+		print (60*"-")
+    	print ("\tWELCOME TO CHAMPION CLUB!")
+    	print("\tVIOLENCE, SPEED, MOMENTUM!")
+		Open File "allsportschedule.txt" in Read mode
+		print("This is your registered sport schedule : ")
+		LOOP line in "allsportschedule.txt"
+			if (studentid in line)
+				call str_to_list_convert With Argument (line), return to regdisplaysch_list
+				call recordsschedule_display With Argument (regdisplaysch_list)
+			end if
+		end LOOP
+		Close File "allsportschedule.txt"
+    	print("Press anything to go back to Main Menu")
+		read regdisplaysch_des
+    	call reg_main_menu With Argument (studentid,studentsportid)
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+34. FUNCTION reg_display_selfrecord(studentid,studentsportid)
+	begin
+		declare regdisplaysr_des
+		declare regdisplaysr_list = []
+		print (60*"-")
+    	print ("\tWELCOME TO CHAMPION CLUB!")
+    	print("\tVIOLENCE, SPEED, MOMENTUM!")
+		Open File "allregstudent.txt" in Read mode
+		print("This is your personal record : ")
+		LOOP line in "allregstudent.txt"
+			if (studentid in line)
+				call str_to_list_convert With Argument (line), return to regdisplaysr_list
+				call recordsreg_display With Argument (regdisplaysr_list)
+			end if
+		end LOOP
+		Close File "allregstudent.txt"
+    	print("Press anything to go back to Main Menu")
+		read regdisplaysr_des
+    	call reg_main_menu With Argument (studentid,studentsportid)
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+35. FUNCTION mod_selfrecord(studentid,studentsportid)
+	begin
+		declare modself_position, modself_new, modself_removeindicator, modself_locindicator,
+		modself_des, final, modself_indicator, x, y, modself_add
+		declare modself_otherlist = [], modself_list = [], modself_newlist = []
+		print (60*"-")
+    	print ("\tWELCOME TO CHAMPION CLUB!")
+    	print("\tVIOLENCE, SPEED, MOMENTUM!")
+		modself_position = 0
+		Open File "allregstudent.txt" in Read Mode
+		LOOP line in "allregstudent.txt"
+			append line into modself_otherlist
+			if modself_search in line
+				Delete modself_otherlist, Position (modself_position)
+				call str_to_list_convert With Argument (line), return to modself_list
+				modself_removeindicator = modself_list[7]
+				call recordsreg_display With Argument (modself_list)
+				print("Is this the right coach data? Enter '1' if correct, or any key to go back to Modify Main Menu : ")
+				read modself_des
+				if (modself_des == 1)
+					append modself_list[0] into modself_newlist
+
+					print("Enter your Username (If the data still the same, type 'same') : ")
+					read modself_new
+					if (modself_new == "same" OR modself_new == "Same" OR modself_new == "SAME")
+                    	append modself_list[1] into modself_newlist
+                	else
+                    	append modself_new into modself_newlist
+					end if
+
+					print("Enter your Password (Minimum 8 Characters long)(If the password still the same, please enter it again) : ")
+					read modself_new
+					while ((Length of modself_new) < 8)
+						print("The Password is too short! Please enter a new one! ")
+						print("Enter your Password (Minimum 8 Characters long)(If the password still the same, please enter it again) : ")
+						read modself_new
+					end while
+					append modself_new into modself_newlist
+
+					print("Enter your Name (If the data still the same, type 'same') : ")
+					read modself_new
+					if (modself_new == "same" or modself_new == "Same" or modself_new == "SAME"):
+                    	append modself_list[3] into modself_newlist
+                	else:
+                    	append modself_new into modself_newlist
+					end if
+
+					print("Enter your Age (If the data still the same, type 'same') : ")
+					read modself_new
+					if (modself_new == "same" or modself_new == "Same" or modself_new == "SAME"):
+                    	append modself_list[4] into modself_newlist
+                	else:
+                    	append modself_new into modself_newlist
+					end if
+
+					print("Enter your Address (If the data still the same, type 'same') : ")
+					read modself_new
+					if (modself_new == "same" or modself_new == "Same" or modself_new == "SAME"):
+                    	append modself_list[5] into modself_newlist
+                	else:
+                    	append modself_new into modself_newlist
+					end if
+
+					print("Enter your Phone number (If the data still the same, type 'same') : ")
+					read modself_new
+					if (modself_new == "same" or modself_new == "Same" or modself_new == "SAME"):
+                    	append modself_list[6] into modself_newlist
+                	else:
+                    	append modself_new into modself_newlist
+					end if
+
+					print("Enter your Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+					read modself_new
+					modself_indicator = 0
+					while (modself_indicator == 0)
+						while (modself_new == "help" OR modself_new == "HELP" OR modself_new == "Help")
+							Open File "help_locationID.txt" in Read Mode
+							print ("help_locationID.txt")
+							Close File "help_locationID.txt"
+							print("Enter your Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+							read modself_new
+						end while
+						if (modself_new == "same" OR modself_new == "Same" OR modself_new == "SAME")
+							append modself_list[7] into modself_newlist
+							append modself_list[8] into modself_newlist
+							modself_locindicator = modself_list[7]
+						else
+							if (modself_new == "L001")
+								modself_indicator = 1
+                            	append modself_new into modself_newlist
+                            	append "Surabaya" into modself_newlist
+                            	modself_locindicator = "L001"
+							else if (modself_new == "L002")
+								modself_indicator = 1
+                            	append modself_new into modself_newlist
+                            	append "Malang" into modself_newlist
+                            	modself_locindicator = "L002"
+							else if (modself_new == "L003")
+								modself_indicator = 1
+                            	append modself_new into modself_newlist
+                            	append "Lampung" into modself_newlist
+                            	modself_locindicator = "L003"
+							else
+								print("Wrong Input!")
+								print("Enter your Location ID (Type 'Help' if the list of Location IDs is Needed) (If the data still the same, type 'same') : ")
+								read modself_new
+							end if
+						end if
+					end while
+
+					call help_sport With Argument (modself_locindicator)
+					print("Enter your Sport ID (If the data still the same, type 'same') : ")
+					read modself_new
+					if (modself_new == "same" or modself_new == "Same" or modself_new == "SAME"):
+                    	append modself_list[9] into modself_newlist
+						append modself_list[10] into modself_newlist
+                	else:
+                    	append modself_new into modself_newlist
+						call sportname_search With Argument (modself_new), return to modself_new
+						append modself_new into modself_newlist
+					end if
+
+					call recordsreg_display With Argument (modself_newlist)
+					print("Please enter '1' to submit the modified the data, or enter any key to enter a new set of data : ")
+					read modself_des
+					if (modself_des == 1)
+						final = (modself_newlist[0]+" | "+modself_newlist[1]+" | "+modself_newlist[2]+" | "+modself_newlist[3]+" | "+modself_newlist[4]+" | "+modself_newlist[5]+" | "+modself_newlist[6]+" | "+modself_newlist[7]+" | "+modself_newlist[8]+" | "+modself_newlist[9]+" | "+modself_newlist[10]+"\n")
+						Insert final into modself_otherlist, position (modself_position)
+					else
+						call mod_selfrecord With Argument (studentid,studentsportid)
+					end if
+				else :
+					call reg_main_menu With Argument (studentid,studentsportid)
+				end if
+			end if
+			modself_position = modself_position + 1
+		end LOOP
+		Close File "allregstudent.txt"
+
+		Open File "allregstudent.txt" in Write mode
+		LOOP x in range(modself_position)
+			y = (-modself_position+x)
+			modself_add = modself_otherlist[y]
+			Write modself_add into "allregstudent.txt"
+		end LOOP
+		Close File "allregstudent.txt"
+
+		modself_otherlist = []
+		modself_position = 0
+
+		if (modself_removeindicator == "L001")
+			Open File "regstudent1surabaya.txt" in Read Mode
+			LOOP line in "regstudent1surabaya.txt"
+				append line into modself_otherlist
+				if modself_search in line
+					Delete modself_otherlist, Position (modself_position)
+					modself_position = modself_position - 1
+				modself_position = modself_position + 1
+			end LOOP
+			Close File "regstudent1surabaya.txt"
+
+			Open File "regstudent1surabaya.txt" in Write mode
+			LOOP x in range(modself_position)
+				y = (-modself_position+x)
+				modself_add = modself_otherlist[y]
+				Write modself_add into "regstudent1surabaya.txt"
+			end LOOP
+			Close File "regstudent1surabaya.txt"
+
+		else if (modself_removeindicator == "L002")
+			Open File "regstudent2malang.txt" in Read Mode
+			LOOP line in "regstudent2malang.txt"
+				append line into modself_otherlist
+				if modself_search in line
+					Delete modself_otherlist, Position (modself_position)
+					modself_position = modself_position - 1
+				modself_position = modself_position + 1
+			end LOOP
+			Close File "regstudent2malang.txt"
+
+			Open File "regstudent2malang.txt" in Write mode
+			LOOP x in range(modself_position)
+				y = (-modself_position+x)
+				modself_add = modself_otherlist[y]
+				Write modself_add into "regstudent2malang.txt"
+			end LOOP
+			Close File "regstudent2malang.txt"
+
+		else if (modself_removeindicator == "L003")
+			Open File "regstudent3lampung.txt" in Read Mode
+			LOOP line in "regstudent3lampung.txt"
+				append line into modself_otherlist
+				if modself_search in line
+					Delete modself_otherlist, Position (modself_position)
+					modself_position = modself_position - 1
+				modself_position = modself_position + 1
+			end LOOP
+			Close File "regstudent3lampung.txt"
+
+			Open File "regstudent3lampung.txt" in Write mode
+			LOOP x in range(modself_position)
+				y = (-modself_position+x)
+				modself_add = modself_otherlist[y]
+				Write modself_add into "regstudent3lampung.txt"
+			end LOOP
+			Close File "regstudent3lampung.txt"
+		end if
+
+		print("Done Deleting the data from old file, now printing the data into the new file")
+
+		if (modself_locindicator == "L001")
+			Open File "regstudent1surabaya.txt" in Append mode
+			Append Final into "regstudent1surabaya.txt"
+			Close File "regstudent1surabaya.txt"
+
+		else if (modself_locindicator == "L002")
+			Open File "regstudent2malang.txt" in Append mode
+			Append Final into "regstudent2malang.txt"
+			Close File "regstudent2malang.txt"
+
+		else if (modself_locindicator == "L003")
+			Open File "regstudent3lampung.txt" in Append mode
+			Append Final into "regstudent3lampung.txt"
+			Close File "regstudent3lampung.txt"
+		end if
+
+		print("Done, Press any key to return to go back to Main Menu")
+		read modself_des
+		call reg_main_menu With Argument (studentid,studentsportid)
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+36. FUNCTION reg_feedback(studentid,studentsportid)
+	begin
+		declare regfeedback_position, regfeedback_coachid, brating, remove, regfeedback_cmt,
+				regfeedback_loc, x, y, regfeedback_add
+		declare regfeedback_otherlist = [], regfeedback_list = []
+		print (60*"-")
+    	print ("\tWELCOME TO CHAMPION CLUB!")
+    	print("\tVIOLENCE, SPEED, MOMENTUM!")
+		regfeedback_position = 0
+		Open File "allcoach.txt" in Read Mode
+		LOOP line in "allcoach.txt"
+			if studentsportid in line
+				call str_to_list_convert With Argument (line), return to regfeedback_list
+				remove = Pop regfeedback_list, position(11)
+				In remove, Replace ("R") with ("")
+				Insert remove into regfeedback_list, position(11)
+				print("\n\nCOACH ID\t\t: ",regfeedback_list[0])
+            	print("COACH NAME\t\t: ",regfeedback_list[1])
+			end if
+		end LOOP
+		print("Enter the coach's ID of the coach you want to give the rating and feedback on : ")
+		read regfeedback_coachid
+		Close File "allcoach.txt"
+
+		Open File "allcoach.txt" in Read mode
+		LOOP line in "allcoach.txt"
+			append line into regfeedback_otherlist
+			if regfeedback_coachid in line
+				Delete regfeedback_otherlist, Position (regfeedback_position)
+				call str_to_list_convert With Argument (line), return to regfeedback_list
+				regfeedback_loc = modself_list[7]
+				brating = Pop regfeedback_list, Position(11)
+				In remove, Replace ("R") with ("")
+				Insert brating into regfeedback_list, position(11)
+				print("Enter your Rating Between 1(Lowest) - 5(Highest) : ")
+				read regfeedback_rating
+				while (regfeedback_rating>5 OR regfeedback_rating<1)
+					print("Invalid Value! Please try again!")
+					print("Enter your Rating Between 1(Lowest) - 5(Highest) : ")
+					read regfeedback_rating
+				end while
+				regfeedback_list[12] = regfeedback_list[12] + 1
+				regfeedback_list[13] = regfeedback_list + regfeedback_rating
+				regfeedback_list[11] = regfeedback_list[13]/regfeedback_list[12]
+				Round regfeedback_list[11] to 2 Decimal Places
+				print("Input comment, critique, or feedback for the coach : ")
+				read regfeedback_cmt
+				print("Okay, Submiting your Rating and Feedback...")
+				final = (regfeedback_list[0]+" | "+regfeedback_list[1]+" | "+regfeedback_list[2]+" | "+regfeedback_list[3]+" | "+regfeedback_list[4]+" | "+regfeedback_list[5]+" | "+regfeedback_list[6]+" | "+regfeedback_list[7]+" | "+regfeedback_list[8]+" | "+regfeedback_list[9]+" | "+regfeedback_list[10]+" | "+"R"+regfeedback_list[11]+" | "+regfeedback_list[12]+" | "+regfeedback_list[13]+"\n")
+				Insert final into regfeedback_otherlist, position(regfeedback_position)
+			end if
+			regfeedback_position = regfeedback_position + 1
+		end LOOP
+		Close File "allcoach.txt"
+
+		Open File "coachfeedback.txt" in Append Mode
+		Append ("For Coach "+regfeedback_list[1]+"\n\tCode "+regfeedback_list[0]+"\n\tFeedback : "+regfeedback_cmt+"\n") into "coachfeedback.txt"
+		Close File "coachfeedback.txt"
+
+		Open File "allcoach.txt" in Write mode
+		LOOP x in range(regfeedback_position)
+			y = (-regfeedback_position+x)
+			regfeedback_add = regfeedback_otherlist[y]
+			Write regfeedback_add into "allcoach.txt"
+		end LOOP
+		Close File "allcoach.txt"
+
+		regfeedback_otherlist = []
+		regfeedback_position = 0
+
+		if (regfeedback_loc == "L001")
+			Open File "coach1surabaya.txt" in Read Mode
+			LOOP line in "coach1surabaya.txt"
+				append line into regfeedback_otherlist
+				if regfeedback_search in line
+					Delete regfeedback_otherlist, Position (regfeedback_position)
+					regfeedback_position = regfeedback_position - 1
+				regfeedback_position = regfeedback_position + 1
+			end LOOP
+			Close File "coach1surabaya.txt"
+
+			Open File "coach1surabaya.txt" in Write mode
+			LOOP x in range(regfeedback_position)
+				y = (-regfeedback_position+x)
+				regfeedback_add = regfeedback_otherlist[y]
+				Write regfeedback_add into "coach1surabaya.txt"
+			end LOOP
+			Close File "coach1surabaya.txt"
+
+		else if (regfeedback_loc == "L002")
+			Open File "coach2malang.txt" in Read Mode
+			LOOP line in "coach2malang.txt"
+				append line into regfeedback_otherlist
+				if regfeedback_search in line
+					Delete regfeedback_otherlist, Position (regfeedback_position)
+					regfeedback_position = regfeedback_position - 1
+				regfeedback_position = regfeedback_position + 1
+			end LOOP
+			Close File "coach2malang.txt"
+
+			Open File "coach2malang.txt" in Write mode
+			LOOP x in range(regfeedback_position)
+				y = (-regfeedback_position+x)
+				regfeedback_add = regfeedback_otherlist[y]
+				Write regfeedback_add into "coach2malang.txt"
+			end LOOP
+			Close File "coach2malang.txt"
+
+		else if (regfeedback_loc == "L003")
+			Open File "coach3lampung.txt" in Read Mode
+			LOOP line in "coach3lampung.txt"
+				append line into regfeedback_otherlist
+				if regfeedback_search in line
+					Delete regfeedback_otherlist, Position (regfeedback_position)
+					regfeedback_position = regfeedback_position - 1
+				regfeedback_position = regfeedback_position + 1
+			end LOOP
+			Close File "coach3lampung.txt"
+
+			Open File "coach3lampung.txt" in Write mode
+			LOOP x in range(regfeedback_position)
+				y = (-regfeedback_position+x)
+				regfeedback_add = regfeedback_otherlist[y]
+				Write regfeedback_add into "coach3lampung.txt"
+			end LOOP
+			Close File "coach3lampung.txt"
+		end if
+		print("Done, Press anything to go back to Main Menu")
+		read x
+    	call reg_main_menu With Argument (studentid,studentsportid)
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+37. FUNCTION sportname_seach(x)
+	begin
+		declare name
+		declare spl = []
+		Open File "allsport.txt" in Read Mode
+		LOOP line in "allsport.txt"
+			if x in line
+				Split line into spl, exclude(" | ")
+				name = spl[1]
+				return name
+			end if
+		end LOOP
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+38. FUNCTION coachname_seach(x)
+	begin
+		declare name
+		declare spl = []
+		Open File "allcoach.txt" in Read Mode
+		LOOP line in "allcoach.txt"
+			if x in line
+				Split line into spl, exclude(" | ")
+				name = spl[1]
+				return name
+			end if
+		end LOOP
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+39. FUNCTION id_auto(remover)
+	begin
+		declare existID, length, newID
+		declare spl = []
+		if (remover == "ID")
+        	myfile = Open File "allcoach.txt" in Read Mode
+    	else if (remover == "S")
+        	myfile = Open File "allsport.txt" in Read Mode
+    	else if (remover == "ST")
+        	myfile = Open File "allregstudent.txt" in Read Mode
+    	else if (remover == "SCH")
+        	myfile = Open File "allsportschedule.txt" in Read Mode
+		end if
+    	LOOP (line in myfile)
+        	Split line into spl, exclude(" | ")
+        	existID = spl[0]
+		end LOOP
+		Close myfile
+
+		if (remover == "ID")
+			in existID, replace ("ID") with ("")
+		else if (remover == "S")
+			in existID, replace ("S") with ("")
+		else if (remover == "ST")
+			in existID, replace ("ST") with ("")
+		else if (remover == "SCH")
+			in existID, replace ("SCH") with ("")
+		end if
+		existID = existID + 1
+		length = Length of existID
+
+		if (length == 1 AND remover == "ID")
+			newID = ("ID00"+existID)
+			Close File "allcoach.txt"
+		else if (length == 2 AND remover == "ID")
+			newID = ("ID0"+existID)
+			Close File "allcoach.txt"
+		else if (length == 3 AND remover == "ID")
+			newID = ("ID"+existID)
+			Close File "allcoach.txt"
+		else if (length == 1 AND remover == "S")
+			newID = ("S00"+existID)
+			Close File "allsport.txt"
+		else if (length == 2 AND remover == "S")
+			newID = ("S0"+existID)
+			Close File "allsport.txt"
+		else if (length == 3 AND remover == "S")
+			newID = ("S"+existID)
+			Close File "allsport.txt"
+		else if (length == 1 AND remover == "ST")
+			newID = ("ST00"+existID)
+			Close File "allregstudent.txt"
+		else if (length == 2 AND remover == "ST")
+			newID = ("ST0"+existID)
+			Close File "allregstudent.txt"
+		else if (length == 3 AND remover == "ST")
+			newID = ("ST"+existID)
+			Close File "allregstudent.txt"
+		else if (length == 1 AND remover == "SCH")
+			newID = ("SCH00"+existID)
+			Close File "allsportschedule.txt"
+		else if (length == 2 AND remover == "SCH")
+			newID = ("SCH0"+existID)
+			Close File "allsportschedule.txt"
+		else if (length == 3 AND remover == "SCH")
+			newID = ("SCH"+existID)
+			Close File "allsportschedule.txt"
+		end if
+		return newID
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+40. FUNCTION recordscoach_display(mylist)
+	begin
+		declare remove
+		remove = Pop mylist, position(11)
+		In remove, Replace ("R") with ("")
+		Insert remove into mylist, position(11)
+		print("\n\nCOACH ID\t\t: ",mylist[0])
+		print("COACH NAME\t\t: ",mylist[1])
+		print("DATE JOINED\t\t: ",mylist[2])
+		print("DATE TERMINATED\t\t: ",mylist[3])
+		print("HOURLY RATE IN MYR\t: ",mylist[4])
+		print("PHONE NUMBER\t\t: ",mylist[5])
+		print("ADDRESS\t\t\t: ",mylist[6])
+		print("LOCATION ID\t\t: ",mylist[7])
+		print("LOCATION NAME\t\t: ",mylist[8])
+		print("SPORT ID\t\t: ",mylist[9])
+		print("SPORT NAME\t\t: ",mylist[10])
+		print("RATING\t\t\t: ",mylist[11])
+		print("NUMBER OF RATING\t: ",mylist[12])
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+41. FUNCTION recordssport_display(mylist)
+	begin
+		print("\n\nSPORT ID\t\t: ",mylist[0])
+		print("SPORTNAME\t\t: ",mylist[1])
+		print("LOCATION ID\t\t: ",mylist[2])
+		print("LOCATION NAME\t\t: ",mylist[3])
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+42. FUNCTION recordsschedule_display(mylist)
+	begin
+		print("\n\nSCHEDULE ID\t\t\t: ",mylist[0])
+    	print("LOCATION ID\t\t\t: ",mylist[1])
+    	print("LOCATION NAME\t\t\t: ",mylist[2])
+    	print("SPORT ID\t\t\t: ",mylist[3])
+    	print("SPORT NAME\t\t\t: ",mylist[4])
+    	print("COACH ID\t\t\t: ",mylist[5])
+    	print("COACH NAME\t\t\t: ",mylist[6])
+    	print("DAY \t\t\t\t: ",mylist[7])
+    	print("STARTING TIME BY THOUSAND\t: ",mylist[8])
+    	print("TIME DURATION IN MINUTES\t: ",mylist[9])
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+43. FUNCTION recordsreg_display(mylist)
+	begin
+		print("\n\nSTUDENT ID\t\t: ",mylist[0])
+		print("STUDENT USERNAME\t: ",mylist[1])
+		print("STUDENT PASSWORD\t: ",mylist[2])
+		print("STUDENT NAME\t\t: ",mylist[3])
+		print("AGE\t\t\t: ",mylist[4])
+		print("ADDRESS\t\t\t: ",mylist[5])
+		print("PHONE NUMBER\t\t: ",mylist[6])
+		print("LOCATION ID\t\t: ",mylist[7])
+		print("LOCATION NAME\t\t: ",mylist[8])
+		print("SPORT ID\t\t: ",mylist[9])
+		print("SPORT NAME\t\t: ",mylist[10])
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+44. FUNCTION str_to_list_convert(line)
+	begin
+		declare remove
+		declare mylist = []
+		Split line into mylist, exclude(" | ")
+		remove = Pop mylist, Last Position
+		in remove, Replace ("\n") with ("")
+		append remove into mylist
+		return (mylist)
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+45. FUNCTION bubble_sort(sort_list,length)
+	begin
+		declare flag, i, temp
+		flag = 0
+		while (flag == 0)
+			flag = 1
+			LOOP i in range(length-1)
+				if sort_list[i] > sort_list[i+1]
+					flag = 0
+					temp = sort_list[i]
+					sort_list[i] = sort_list[i+1]
+					sort_list[i+1] = temp
+			end LOOP
+		end while
+		return(sort_list)
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+46. FUNCTION help_sport(x)
+	begin
+		declare helpsport_list = []
+		Open File "allsport.txt" in Read Mode
+		print("The Available Sports in location ",x," are : ")
+		LOOP line in "allsport.txt"
+			if x in line
+				call str_to_list_convert With Argument (line), return to helpsport_list
+				print(helpsport_list[1]," = ",helpsport_list[0])
+			end if
+		end LOOP
+		Close File "allsport.txt"
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+47. FUNCTION help_coach(x,y)
+	begin
+		declare helpcoach_list = []
+		Open File "allcoach.txt" in Read Mode
+		print("The Available Coach in for ",y,"and in ",x," are :")
+		LOOP line in "allcoach.txt"
+			if (x AND y) in line
+				call str_to_list_convert With Argument (line), return to helpcoach_list
+				print(helpcoach_list[1]," = ",helpcoach_list[0])
+			end if
+		end LOOP
+		Close File "allcoach.txt"
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+48. MAIN BASE
+	begin
+		call role_selection()
+	end.
+
+//------------------------------------------------------------------------------------------------------------------------------------

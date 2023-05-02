@@ -1,0 +1,3 @@
+ST001 | edo14 | test123123 | Edward Leonardo | 18 | Ploso Timur | 081359282895 | L001 | Surabaya | S001 | Basketball
+ST002 | moudy14 | test123123 | Moudy Wiyono | 16 | Agustinus | 01293752331413 | L002 | Malang | S006 | Football
+ST003 | eva14 | test123123 | Fransisca Eva | 16 | Sawah | 03456457656786 | L003 | Lampung | S009 | Table Tennis

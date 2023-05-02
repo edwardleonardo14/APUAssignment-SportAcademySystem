@@ -1,0 +1,2 @@
+SCH002 | L002 | Malang | S006 | Football | ID006 | William Wiraatmaja | Monday | 14.00 PM | 120 Minutes
+SCH004 | L002 | Malang | S005 | Badminton | ID005 | Moudy Wiyono | Wednesday | 15.00 PM | 180 Minutes

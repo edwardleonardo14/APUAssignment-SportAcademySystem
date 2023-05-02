@@ -1,0 +1,3 @@
+S005 | Badminton | L002 | Malang
+S006 | Football | L002 | Malang
+S007 | Swimming | L002 | Malang
