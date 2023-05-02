@@ -1,6 +1,6 @@
 # APU Assignment - Sport Academy System
 
-DISCLAIMER: Do keep in mind that this is an assignment from the 1st Semester, with multiple limitations imposed by the lecturer.
+# DISCLAIMER: Do keep in mind that this is an assignment from the 1st Semester, with multiple limitations imposed by the lecturer.
 
 As Part of APU Module, Python Programming (PYP), students is tasked to develop a System to be used for a Sports Academy.
 
